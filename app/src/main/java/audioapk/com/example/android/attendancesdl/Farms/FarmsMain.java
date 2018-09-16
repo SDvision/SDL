@@ -1,4 +1,4 @@
-package audioapk.com.example.android.attendancesdl.Teacher;
+package audioapk.com.example.android.attendancesdl.Farms;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -9,19 +9,20 @@ import android.support.v7.app.AppCompatActivity;
 
 import audioapk.com.example.android.attendancesdl.R;
 
-public class Teacher extends AppCompatActivity {
+public class FarmsMain extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.teacher_layout);
+        setContentView(R.layout.farm_main);
 
         // Create an instance of the tab layout from the view.
         final TabLayout tabLayout = findViewById(R.id.tab_layout);
         // Set the text for each tab.
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.Teacher_Class_students));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.Teacher_Statistics));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.farm_you_farms));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.farm_world));
+
 
         // Set the tabs to fill the entire layout.
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -34,8 +35,8 @@ public class Teacher extends AppCompatActivity {
             @Override
             public Fragment getItem(int position) {
                 switch (position) {
-                    case 0: return new StudentList();
-                    case 1: return new Statistics();
+                    case 0: return new FarmList();
+                    case 1: return new World();
                     default: return null;
                 }
             }

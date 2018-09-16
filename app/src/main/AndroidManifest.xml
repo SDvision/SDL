@@ -12,8 +12,8 @@
         <activity android:name=".LogIn"
             android:theme="@style/RemoveActionBar">
         </activity>
-        <activity android:name=".Teacher.Teacher"
-            android:theme="@style/Teacher">
+        <activity android:name=".Farms.FarmsMain"
+            android:label="My Farms">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
