@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import audioapk.com.example.android.attendancesdl.Farms.YourFarmFragment.FarmList;
 import audioapk.com.example.android.attendancesdl.R;
 
 public class FarmsMain extends AppCompatActivity {
