@@ -20,7 +20,7 @@ import audioapk.com.example.android.attendancesdl.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FarmList extends Fragment {
+public class FarmList extends Fragment implements View.OnClickListener{
 
 
     private ArrayList<Sport> mSportsData;
@@ -132,12 +132,13 @@ public class FarmList extends Fragment {
         mAdapter.notifyDataSetChanged();
     }
 
+
     /**
-     * onClick method for th FAB that resets the data.
-     *
-     * @param view The button view that was clicked.
+     * Floating point button
+     * @param v view That was clicked
      */
-    public void resetSports(View view) {
-        initializeData();
+    @Override
+    public void onClick(View v) {
+
     }
 }
