@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LogIn"
+        <activity android:name="audioapk.com.example.android.attendancesdl.LogIn"
             android:theme="@style/RemoveActionBar">
         </activity>
-        <activity android:name=".Farms.FarmsMain"
+        <activity android:name="audioapk.com.example.android.attendancesdl.Farms.FarmsMain"
             android:label="My Farms">
 
             <intent-filter>
