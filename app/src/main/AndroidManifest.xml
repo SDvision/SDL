@@ -11,17 +11,23 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LogIn"
-            android:theme="@style/RemoveActionBar"></activity>
+            android:theme="@style/RemoveActionBar">
+
+        </activity>
         <activity
             android:name=".Farms.FarmsMain"
             android:label="My Farms">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Processes.ProcessesMain"></activity>
+        <activity android:name=".Processes.ProcessesMain"/>
+        <activity android:name=".Profile">
+
+        </activity>
     </application>
 
 </manifest>

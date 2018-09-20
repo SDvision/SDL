@@ -11,6 +11,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,7 +19,7 @@ import java.util.Collections;
 import audioapk.com.example.android.attendancesdl.R;
 
 
-public class FarmList extends Fragment implements View.OnClickListener{
+public class FarmList extends Fragment implements View.OnClickListener,AddFarmDialog.OnInputListener{
 
 
     private ArrayList<FarmCard> mSportsData;
@@ -101,5 +102,15 @@ public class FarmList extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
 
+        AddFarmDialog addFarmDialog = new AddFarmDialog();
+        addFarmDialog.setOnInputListener(this);
+        addFarmDialog.show(getActivity().getFragmentManager(),"Add Farm");
+
+    }
+
+
+    @Override
+    public void setValues() {
+        Toast.makeText(getActivity(),"Fragment",Toast.LENGTH_SHORT).show();
     }
 }
