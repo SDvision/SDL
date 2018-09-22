@@ -8,7 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import audioapk.com.example.android.attendancesdl.Farms.WorldFarmFragment.World;
-import audioapk.com.example.android.attendancesdl.Farms.YourFarmFragment.FarmList;
+import audioapk.com.example.android.attendancesdl.Farms.YourFarmFragment.FarmYouList;
 import audioapk.com.example.android.attendancesdl.R;
 
 public class FarmsMain extends AppCompatActivity {
@@ -33,7 +33,7 @@ public class FarmsMain extends AppCompatActivity {
             @Override
             public Fragment getItem(int position) {
                 switch (position) {
-                    case 0: return new FarmList();
+                    case 0: return new FarmYouList();
                     case 1: return new World();
                     default: return null;
                 }

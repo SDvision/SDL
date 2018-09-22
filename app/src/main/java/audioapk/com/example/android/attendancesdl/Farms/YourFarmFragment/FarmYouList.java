@@ -19,13 +19,13 @@ import java.util.Collections;
 import audioapk.com.example.android.attendancesdl.R;
 
 
-public class FarmList extends Fragment implements View.OnClickListener,AddFarmDialog.OnInputListener{
+public class FarmYouList extends Fragment implements View.OnClickListener,AddFarmDialog.OnInputListener{
 
 
     private ArrayList<FarmCard> mSportsData;
     private FarmsAdapter mAdapter;
 
-    public FarmList() {
+    public FarmYouList() {
 
     }
 
