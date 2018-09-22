@@ -7,8 +7,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import audioapk.com.example.android.attendancesdl.Farms.WorldFarmFragment.World;
-import audioapk.com.example.android.attendancesdl.Processes.WorldProcessesFragment.ProcessYouList;
+import audioapk.com.example.android.attendancesdl.Processes.YourProcessesFragment.ProcessYouList;
+import audioapk.com.example.android.attendancesdl.Processes.WorldProcessesFragment.WorldProcess;
 import audioapk.com.example.android.attendancesdl.R;
 
 public class ProcessesMain extends AppCompatActivity {
@@ -16,7 +16,7 @@ public class ProcessesMain extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.processes_main);
+        setContentView(R.layout.process_main);
 
         final TabLayout tabLayout = findViewById(R.id.tab_layout2);
 
@@ -33,7 +33,7 @@ public class ProcessesMain extends AppCompatActivity {
             public Fragment getItem(int position) {
                 switch (position) {
                     case 0: return new ProcessYouList();
-                    case 1: return new World();
+                    case 1: return new WorldProcess();
                     default: return null;
                 }
             }

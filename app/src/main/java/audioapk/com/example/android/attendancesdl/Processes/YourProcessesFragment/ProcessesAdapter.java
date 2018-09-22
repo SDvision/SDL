@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-package audioapk.com.example.android.attendancesdl.Processes.WorldProcessesFragment;
+package audioapk.com.example.android.attendancesdl.Processes.YourProcessesFragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,15 +26,16 @@ import android.widget.TextView;
 
 import java.util.LinkedList;
 
+import audioapk.com.example.android.attendancesdl.DetailProcess;
 import audioapk.com.example.android.attendancesdl.R;
 
-public class ProcessesAdapter extends RecyclerView.Adapter<ProcessesAdapter.WordViewHolder> {
+class ProcessesAdapter extends RecyclerView.Adapter<ProcessesAdapter.WordViewHolder> {
 
     private final LinkedList<String> mWordList;
     private final LayoutInflater mInflater;
+    private Context context;
 
-    class WordViewHolder extends RecyclerView.ViewHolder
-            implements View.OnClickListener {
+    class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         final TextView wordItemView;
         final ProcessesAdapter mAdapter;
 
@@ -49,20 +51,26 @@ public class ProcessesAdapter extends RecyclerView.Adapter<ProcessesAdapter.Word
             int mPosition = getLayoutPosition();
 
             String element = mWordList.get(mPosition);
+            Intent detailIntent = new Intent(context, DetailProcess.class);
+            detailIntent.putExtra("title", element+" Clicked!");
 
             mWordList.set(mPosition, "Clicked! " + element);
             mAdapter.notifyDataSetChanged();
+
+
+            context.startActivity(detailIntent);
+
         }
     }
 
     public ProcessesAdapter(Context context, LinkedList<String> wordList) {
         mInflater = LayoutInflater.from(context);
         this.mWordList = wordList;
+        this.context = context;
     }
 
     @Override
-    public ProcessesAdapter.WordViewHolder onCreateViewHolder(ViewGroup parent,
-                                                              int viewType) {
+    public ProcessesAdapter.WordViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View mItemView = mInflater.inflate(R.layout.process_you_processes_card, parent, false);
         return new WordViewHolder(mItemView, this);
     }

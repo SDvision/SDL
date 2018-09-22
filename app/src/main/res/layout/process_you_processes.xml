@@ -7,14 +7,49 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    tools:context=".Processes.WorldProcessesFragment.ProcessYouList">
+    tools:context=".Processes.YourProcessesFragment.ProcessYouList">
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView2"
-        android:scrollbars="vertical"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:descendantFocusability="blocksDescendants">
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants">
+            <!-- DEV NOTE: Outer wrapper relative layout is added intentionally to address issue
+                 that only happens on Marshmallow & Nougat devices (API 23 & 24).
+                 On marshmallow API 23, the "RecyclerView" `layout_height="wrap_content"` does NOT
+                 occupy the height of all the elements added to it via adapter. The result is cut out
+                 items that is outside of device viewport when it loads initially.
+                 Wrapping "RecyclerView" with "RelativeLayout" fixes the issue on Marshmallow devices.
+            -->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView2"
+                    android:scrollbars="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_farm_floating_button2"

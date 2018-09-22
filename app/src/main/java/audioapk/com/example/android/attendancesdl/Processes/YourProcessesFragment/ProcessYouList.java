@@ -1,4 +1,4 @@
-package audioapk.com.example.android.attendancesdl.Processes.WorldProcessesFragment;
+package audioapk.com.example.android.attendancesdl.Processes.YourProcessesFragment;
 
 
 import android.os.Bundle;
@@ -58,6 +58,8 @@ public class ProcessYouList extends Fragment {
         mAdapter = new ProcessesAdapter(getActivity(), mWordList);
         // Connect the adapter with the recycler view.
         mRecyclerView.setAdapter(mAdapter);
+
+        mRecyclerView.setNestedScrollingEnabled(false);
         // Give the recycler view a default layout manager.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
