@@ -1,9 +1,7 @@
-package audioapk.com.example.android.attendancesdl.Farms.YourFarmFragment;
-
+package audioapk.com.example.android.farmertofarmer.Farms.WorldFarmFragment;
 
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,39 +9,35 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-import audioapk.com.example.android.attendancesdl.R;
+import audioapk.com.example.android.farmertofarmer.R;
 
 
-public class FarmYouList extends Fragment implements View.OnClickListener,AddFarmDialog.OnInputListener{
+public class World extends Fragment{
+
+    private ArrayList<WorldFarmCard> mSportsData;
+    private WorldFarmsAdapter mAdapter;
 
 
-    private ArrayList<FarmCard> mSportsData;
-    private FarmsAdapter mAdapter;
-
-    public FarmYouList() {
-
+    public World() {
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View rootView =  inflater.inflate(R.layout.farm_you_farms, container, false);
-
+        View rootView =  inflater.inflate(R.layout.farm_world, container, false);
         RecyclerView mRecyclerView = rootView.findViewById(R.id.recyclerView);
-        FloatingActionButton addFarmFloatingButton = rootView.findViewById(R.id.add_farm_floating_button);
-        addFarmFloatingButton.setOnClickListener(this);
+
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mSportsData = new ArrayList<>();
 
-        mAdapter = new FarmsAdapter(getActivity(), mSportsData);
+        mAdapter = new WorldFarmsAdapter(getActivity(), mSportsData);
         mRecyclerView.setAdapter(mAdapter);
 
         initializeData();
@@ -89,7 +83,7 @@ public class FarmYouList extends Fragment implements View.OnClickListener,AddFar
         mSportsData.clear();
 
         for (int i = 0; i < sportsList.length; i++) {
-            mSportsData.add(new FarmCard(sportsList[i], sportsInfo[i],
+            mSportsData.add(new WorldFarmCard(sportsList[i], sportsInfo[i],
                     sportsImageResources.getResourceId(i, 0)));
         }
 
@@ -98,19 +92,4 @@ public class FarmYouList extends Fragment implements View.OnClickListener,AddFar
         mAdapter.notifyDataSetChanged();
     }
 
-
-    @Override
-    public void onClick(View v) {
-
-        AddFarmDialog addFarmDialog = new AddFarmDialog();
-        addFarmDialog.setOnInputListener(this);
-        addFarmDialog.show(getActivity().getFragmentManager(),"Add Farm");
-
-    }
-
-
-    @Override
-    public void setValues() {
-        Toast.makeText(getActivity(),"Fragment",Toast.LENGTH_SHORT).show();
-    }
 }

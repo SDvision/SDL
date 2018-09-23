@@ -1,4 +1,4 @@
-package audioapk.com.example.android.attendancesdl.Processes.WorldProcessesFragment;
+package audioapk.com.example.android.farmertofarmer.Processes.WorldProcessesFragment;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.LinkedList;
 
-import audioapk.com.example.android.attendancesdl.R;
+import audioapk.com.example.android.farmertofarmer.R;
 
 class WorldProcessAdapter extends RecyclerView.Adapter<WorldProcessAdapter.WordViewHolder> {
 

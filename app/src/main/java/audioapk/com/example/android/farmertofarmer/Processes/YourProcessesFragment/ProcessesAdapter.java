@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package audioapk.com.example.android.attendancesdl.Processes.YourProcessesFragment;
+package audioapk.com.example.android.farmertofarmer.Processes.YourProcessesFragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,8 +26,8 @@ import android.widget.TextView;
 
 import java.util.LinkedList;
 
-import audioapk.com.example.android.attendancesdl.DetailProcess;
-import audioapk.com.example.android.attendancesdl.R;
+import audioapk.com.example.android.farmertofarmer.DetailProcess;
+import audioapk.com.example.android.farmertofarmer.R;
 
 class ProcessesAdapter extends RecyclerView.Adapter<ProcessesAdapter.WordViewHolder> {
 

@@ -1,6 +1,6 @@
 
 
-package audioapk.com.example.android.attendancesdl.Farms.YourFarmFragment;
+package audioapk.com.example.android.farmertofarmer.Farms.YourFarmFragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,8 +15,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-import audioapk.com.example.android.attendancesdl.Processes.ProcessesMain;
-import audioapk.com.example.android.attendancesdl.R;
+import audioapk.com.example.android.farmertofarmer.Processes.ProcessesMain;
+import audioapk.com.example.android.farmertofarmer.R;
 
 class FarmsAdapter extends RecyclerView.Adapter<FarmsAdapter.ViewHolder>  {
 

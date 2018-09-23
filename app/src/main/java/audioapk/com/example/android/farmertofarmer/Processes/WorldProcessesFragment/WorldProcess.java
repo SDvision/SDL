@@ -1,4 +1,4 @@
-package audioapk.com.example.android.attendancesdl.Processes.WorldProcessesFragment;
+package audioapk.com.example.android.farmertofarmer.Processes.WorldProcessesFragment;
 
 
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import java.util.LinkedList;
 
-import audioapk.com.example.android.attendancesdl.R;
+import audioapk.com.example.android.farmertofarmer.R;
 
 
 public class WorldProcess extends Fragment {

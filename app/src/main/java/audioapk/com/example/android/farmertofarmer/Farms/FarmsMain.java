@@ -1,4 +1,4 @@
-package audioapk.com.example.android.attendancesdl.Farms;
+package audioapk.com.example.android.farmertofarmer.Farms;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -7,17 +7,22 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import audioapk.com.example.android.attendancesdl.Farms.WorldFarmFragment.World;
-import audioapk.com.example.android.attendancesdl.Farms.YourFarmFragment.FarmYouList;
-import audioapk.com.example.android.attendancesdl.R;
+import audioapk.com.example.android.farmertofarmer.Farms.WorldFarmFragment.World;
+import audioapk.com.example.android.farmertofarmer.Farms.YourFarmFragment.FarmYouList;
+import audioapk.com.example.android.farmertofarmer.R;
 
 public class FarmsMain extends AppCompatActivity {
+
+    private static final String LOGIN = "login";
+    private static final String sharedFile = "com.example.android.";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farm_main);
+
+
 
         final TabLayout tabLayout = findViewById(R.id.tab_layout);
 

@@ -1,5 +1,5 @@
 
-package audioapk.com.example.android.attendancesdl.Farms.WorldFarmFragment;
+package audioapk.com.example.android.farmertofarmer.Farms.WorldFarmFragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,8 +14,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-import audioapk.com.example.android.attendancesdl.Processes.ProcessesMain;
-import audioapk.com.example.android.attendancesdl.R;
+import audioapk.com.example.android.farmertofarmer.Processes.ProcessesMain;
+import audioapk.com.example.android.farmertofarmer.R;
 
 class WorldFarmsAdapter extends RecyclerView.Adapter<WorldFarmsAdapter.ViewHolder>  {
 

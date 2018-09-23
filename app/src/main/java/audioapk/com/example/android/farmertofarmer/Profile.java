@@ -1,4 +1,4 @@
-package audioapk.com.example.android.attendancesdl;
+package audioapk.com.example.android.farmertofarmer;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import audioapk.com.example.android.attendancesdl.Farms.FarmsMain;
+import audioapk.com.example.android.farmertofarmer.Farms.FarmsMain;
 
 public class Profile extends AppCompatActivity {
 

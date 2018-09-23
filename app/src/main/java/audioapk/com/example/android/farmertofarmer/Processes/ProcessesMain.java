@@ -1,4 +1,4 @@
-package audioapk.com.example.android.attendancesdl.Processes;
+package audioapk.com.example.android.farmertofarmer.Processes;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -7,9 +7,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import audioapk.com.example.android.attendancesdl.Processes.YourProcessesFragment.ProcessYouList;
-import audioapk.com.example.android.attendancesdl.Processes.WorldProcessesFragment.WorldProcess;
-import audioapk.com.example.android.attendancesdl.R;
+import audioapk.com.example.android.farmertofarmer.Processes.YourProcessesFragment.ProcessYouList;
+import audioapk.com.example.android.farmertofarmer.Processes.WorldProcessesFragment.WorldProcess;
+import audioapk.com.example.android.farmertofarmer.R;
 
 public class ProcessesMain extends AppCompatActivity {
 

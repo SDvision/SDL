@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="audioapk.com.example.android.attendancesdl">
+    package="audioapk.com.example.android.farmertofarmer">
 
     <application
         android:allowBackup="true"
@@ -15,12 +15,6 @@
             android:name=".LogIn"
             android:theme="@style/RemoveActionBar">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
         </activity>
 
         <!--Profile-->
@@ -34,6 +28,11 @@
             android:name=".Farms.FarmsMain"
             android:label="My Farms">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <!--Processes-->

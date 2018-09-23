@@ -1,4 +1,4 @@
-package audioapk.com.example.android.attendancesdl.Farms.YourFarmFragment;
+package audioapk.com.example.android.farmertofarmer.Farms.YourFarmFragment;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import audioapk.com.example.android.attendancesdl.R;
+import audioapk.com.example.android.farmertofarmer.R;
 
 class AddFarmDialog extends DialogFragment {
 

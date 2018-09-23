@@ -1,4 +1,4 @@
-package audioapk.com.example.android.attendancesdl.Processes.YourProcessesFragment;
+package audioapk.com.example.android.farmertofarmer.Processes.YourProcessesFragment;
 
 
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import java.util.LinkedList;
 
-import audioapk.com.example.android.attendancesdl.R;
+import audioapk.com.example.android.farmertofarmer.R;
 
 public class ProcessYouList extends Fragment {
 

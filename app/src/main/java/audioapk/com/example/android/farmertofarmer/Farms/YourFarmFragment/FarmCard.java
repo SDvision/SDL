@@ -1,5 +1,5 @@
 
-package audioapk.com.example.android.attendancesdl.Farms.YourFarmFragment;
+package audioapk.com.example.android.farmertofarmer.Farms.YourFarmFragment;
 
 class FarmCard {
 
@@ -8,7 +8,8 @@ class FarmCard {
     private final int imageResource;
 
 
-    public FarmCard(String title, String info, int imageResource) {
+
+    FarmCard(String title, String info, int imageResource) {
         this.title = title;
         this.info = info;
         this.imageResource = imageResource;
