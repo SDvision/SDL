@@ -9,21 +9,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!--Login-->
         <activity
             android:name=".LogIn"
-            android:theme="@style/RemoveActionBar"></activity>
-        <activity
-            android:name=".Farms.FarmsMain"
-            android:label="My Farms"></activity>
-        <activity android:name=".Processes.ProcessesMain">
+            android:theme="@style/RemoveActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".Profile"></activity>
-        <activity android:name=".DetailProcess"></activity>
+
+        <!--Profile-->
+        <activity android:name=".Profile">
+
+        </activity>
+
+
+        <!--Farms-->
+        <activity
+            android:name=".Farms.FarmsMain"
+            android:label="My Farms">
+
+        </activity>
+
+        <!--Processes-->
+        <activity android:name=".Processes.ProcessesMain">
+
+        </activity>
+
+
+        <!--Details-->
+        <activity android:name=".DetailProcess">
+
+        </activity>
     </application>
 
 </manifest>

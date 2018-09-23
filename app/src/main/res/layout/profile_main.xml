@@ -7,7 +7,7 @@
     tools:context=".Profile">
 
     <TextView
-        android:id="@+id/mainText"
+        android:id="@+id/profile_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/profile_name"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginEnd="84dp"
@@ -36,50 +36,51 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainText" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_title" />
 
     <TextView
-        android:id="@+id/profileAddress"
+        android:id="@+id/profile_address_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Address"
-        android:textColor="#333333"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:layout_marginTop="60dp"
+        android:text="Enter your address"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintHorizontal_bias="0.04"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_name" />
 
     <LinearLayout
-        android:id="@+id/stateLinearLayout"
+        android:id="@+id/profile_stateLinearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="48dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileAddress">
+        app:layout_constraintTop_toBottomOf="@+id/profile_address_text">
 
         <TextView
-            android:id="@+id/stateTextView"
+            android:id="@+id/profile_stateTextView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:paddingTop="10dp"
             android:layout_weight="1"
             android:text="State"
             android:textColor="#333333"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profileAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/profile_address_text" />
 
         <Spinner
-            android:id="@+id/state"
+            android:id="@+id/profile_stateSpinner"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="8dp"
@@ -87,26 +88,28 @@
             android:layout_weight="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/profileAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/profile_address_text" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/districtLinearLayout"
+        android:id="@+id/profile_districtLinearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="36dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stateLinearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/profile_stateLinearLayout">
 
         <TextView
-            android:id="@+id/districtTextView"
+            android:id="@+id/profile_districtTextView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:paddingTop="10dp"
             android:text="District"
             android:textColor="#333333"
             android:textSize="18sp"
@@ -115,7 +118,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <Spinner
-            android:id="@+id/district"
+            android:id="@+id/profile_districtSpinner"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="8dp"
@@ -123,27 +126,29 @@
             android:layout_weight="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/profileAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/profile_address_text" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/talukaLinearLayout3"
+        android:id="@+id/profile_talukaLinearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="36dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/districtLinearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/profile_districtLinearLayout">
 
         <TextView
-            android:id="@+id/talukaTextView3"
+            android:id="@+id/profile_talukaTextView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Taluka"
+            android:paddingTop="10dp"
             android:textColor="#333333"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -151,7 +156,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <Spinner
-            android:id="@+id/taluka"
+            android:id="@+id/profile_talukaSpinner"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="8dp"
@@ -159,9 +164,26 @@
             android:layout_weight="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/profileAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/profile_address_text" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/profile_getStarted_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:onClick="getStartedClicked"
+        android:background="@drawable/button_drawable"
+        android:text="Get Started"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_talukaLinearLayout" />
 
 
 </android.support.constraint.ConstraintLayout>

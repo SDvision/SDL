@@ -7,7 +7,7 @@
     tools:context=".LogIn">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/login_main_constrain"
         android:layout_width="match_parent"
         android:layout_height="193dp"
         android:background="@color/colorPrimary"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/login_titile"
+            android:id="@+id/login_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -25,7 +25,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="@string/app_name"
-            android:textColor="@color/colorAccent"
+            android:textColor="#ffffff"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +36,7 @@
             app:layout_constraintVertical_bias="0.07" />
 
         <TextView
-            android:id="@+id/login_desception"
+            android:id="@+id/login_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -49,7 +49,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.085"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_titile"
+            app:layout_constraintTop_toBottomOf="@+id/login_title"
             app:layout_constraintVertical_bias="0.22" />
 
     </android.support.constraint.ConstraintLayout>
@@ -68,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/login_main_constrain" />
 
     <EditText
         android:id="@+id/login_password"
@@ -79,10 +79,27 @@
         android:layout_marginTop="8dp"
         android:drawableStart="@android:drawable/ic_lock_lock"
         android:ems="10"
-        android:hint="enter your password"
+        android:hint="Enter your password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_farmerID" />
+
+    <Button
+        android:id="@+id/login_loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Login"
+        android:onClick="loginClicked"
+        android:background="@drawable/button_drawable"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_password" />
 
 </android.support.constraint.ConstraintLayout>
