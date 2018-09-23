@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="ChangeProfile"
+        android:id="@+id/farm_change_profile_menu"
+        app:showAsAction="never"/>
+    <item android:title="Logout"
+        android:id="@+id/farm_logout_menu"
+        app:showAsAction="never"/>
+</menu>

@@ -89,9 +89,14 @@ public class Profile extends AppCompatActivity {
             SharedPreferences sharedPreferences = getSharedPreferences(LogIn.SHARED_FILE,MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(LogIn.LOGIN, Objects.requireNonNull(getIntent().getExtras()).getString("farmerId"));
-            editor.putString(LogIn.LOGIN_PASSWORD,getIntent().getExtras().getString("farmerPassword"));
             editor.apply();
         }
+
+        SharedPreferences sharedPreferences = getSharedPreferences(LogIn.SHARED_FILE,MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(LogIn.STATE,state_Spinner.getSelectedItem().toString());
+        editor.putString(LogIn.DISTRICT,district_Spinner.getSelectedItem().toString());
+        editor.apply();
 
         Intent intent = new Intent(this, FarmsMain.class);
         startActivity(intent);

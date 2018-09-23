@@ -9,7 +9,6 @@ import android.widget.EditText;
 public class LogIn extends AppCompatActivity {
 
     public static final String LOGIN = "login",
-                                LOGIN_PASSWORD = "login_password",
                                 STATE = "state",
                                 DISTRICT = "district",
                                 TALUKA = "taluka",
@@ -40,11 +39,10 @@ public class LogIn extends AppCompatActivity {
             farmerPassword.setError("Password could't be empty");
             return;
         }
-        //TODO(a-1) database conditions should be addressed here to check login is correct
+        //TODO(a-1) database conditions should be addressed here to check login and password is correct
 
         Intent intent = new Intent(this,Profile.class);
         intent.putExtra("farmerId",farmerIdEditText.getText().toString());
-        intent.putExtra("farmerPassword",farmerPassword.getText().toString());
         startActivity(intent);
 
 
