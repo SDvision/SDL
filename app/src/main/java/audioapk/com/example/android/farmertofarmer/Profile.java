@@ -1,6 +1,7 @@
 package audioapk.com.example.android.farmertofarmer;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import audioapk.com.example.android.farmertofarmer.Farms.FarmsMain;
 
@@ -81,6 +83,14 @@ public class Profile extends AppCompatActivity {
         if (state_Spinner.getSelectedItem() == null || district_Spinner.getSelectedItem() == null || state_Spinner.getSelectedItemPosition() == 0 || district_Spinner.getSelectedItemPosition() == 0){
             Snackbar.make(findViewById(android.R.id.content),"State and District should be specified",Snackbar.LENGTH_LONG).show();
             return;
+        }
+
+        if (getIntent().hasExtra("farmerId") && getIntent().hasExtra("farmerPassword")){
+            SharedPreferences sharedPreferences = getSharedPreferences(LogIn.SHARED_FILE,MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(LogIn.LOGIN, Objects.requireNonNull(getIntent().getExtras()).getString("farmerId"));
+            editor.putString(LogIn.LOGIN_PASSWORD,getIntent().getExtras().getString("farmerPassword"));
+            editor.apply();
         }
 
         Intent intent = new Intent(this, FarmsMain.class);

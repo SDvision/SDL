@@ -15,11 +15,16 @@
             android:name=".LogIn"
             android:theme="@style/RemoveActionBar">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
 
         <!--Profile-->
         <activity android:name=".Profile">
-
         </activity>
 
 
@@ -28,11 +33,7 @@
             android:name=".Farms.FarmsMain"
             android:label="My Farms">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <!--Processes-->

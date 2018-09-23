@@ -8,6 +8,13 @@ import android.widget.EditText;
 
 public class LogIn extends AppCompatActivity {
 
+    public static final String LOGIN = "login",
+                                LOGIN_PASSWORD = "login_password",
+                                STATE = "state",
+                                DISTRICT = "district",
+                                TALUKA = "taluka",
+            SHARED_FILE = "com.example.android.farmertofarmer.loginId";
+
 
     private EditText farmerIdEditText,farmerPassword;
 
@@ -36,7 +43,8 @@ public class LogIn extends AppCompatActivity {
         //TODO(a-1) database conditions should be addressed here to check login is correct
 
         Intent intent = new Intent(this,Profile.class);
-
+        intent.putExtra("farmerId",farmerIdEditText.getText().toString());
+        intent.putExtra("farmerPassword",farmerPassword.getText().toString());
         startActivity(intent);
 
 
