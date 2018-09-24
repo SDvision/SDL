@@ -23,11 +23,7 @@
             android:descendantFocusability="blocksDescendants">
 
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Button" />
-
+            <include android:id="@+id/process_farm_card" layout="@layout/farm_you_farms_card"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
