@@ -7,14 +7,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import audioapk.com.example.android.farmertofarmer.R;
 
@@ -48,38 +46,39 @@ public class FarmYouList extends Fragment implements View.OnClickListener,AddFar
 
         initializeData();
 
-        ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
-                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT |
-                        ItemTouchHelper.DOWN | ItemTouchHelper.UP,
-                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+//        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
+//                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT |
+//                        ItemTouchHelper.DOWN | ItemTouchHelper.UP,
+//                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+//
+//            @Override
+//            public boolean onMove(RecyclerView recyclerView,
+//                                  RecyclerView.ViewHolder viewHolder,
+//                                  RecyclerView.ViewHolder target) {
+//                int from = viewHolder.getAdapterPosition();
+//                int to = target.getAdapterPosition();
+//
+//                Collections.swap(mFarmData, from, to);
+//                mAdapter.notifyItemMoved(from, to);
+//                return true;
+//            }
+//
+//            @Override
+//            public void onSwiped(RecyclerView.ViewHolder viewHolder,
+//                                 int direction) {
+//                mFarmData.remove(viewHolder.getAdapterPosition());
+//                mAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+//            }
+//        }).attachToRecyclerView(mRecyclerView);
 
-            @Override
-            public boolean onMove(RecyclerView recyclerView,
-                                  RecyclerView.ViewHolder viewHolder,
-                                  RecyclerView.ViewHolder target) {
-                int from = viewHolder.getAdapterPosition();
-                int to = target.getAdapterPosition();
-
-                Collections.swap(mFarmData, from, to);
-                mAdapter.notifyItemMoved(from, to);
-                return true;
-            }
-
-            @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder,
-                                 int direction) {
-                mFarmData.remove(viewHolder.getAdapterPosition());
-                mAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-            }
-        });
-
-        helper.attachToRecyclerView(mRecyclerView);
         return rootView;
     }
 
     private void initializeData() {
 
-        String[] farmNameList = getResources().getStringArray(R.array.sports_titles);
+
+        //TODO init data from room database
+        String[] farmNameList = getResources().getStringArray(R.array.farm_titles);
         String[] farmInfo = getResources().getStringArray(R.array.sports_info);
         TypedArray farmImageResources = getResources().obtainTypedArray(R.array.sports_images);
 
@@ -87,7 +86,7 @@ public class FarmYouList extends Fragment implements View.OnClickListener,AddFar
 
         for (int i = 0; i < farmNameList.length; i++) {
             mFarmData.add(new FarmCard(farmNameList[i], farmInfo[i],
-                    farmImageResources.getResourceId(i, 0)));
+                    farmImageResources.getResourceId(i, 0),0,new int[3]));
         }
 
         farmImageResources.recycle();

@@ -5,13 +5,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import audioapk.com.example.android.farmertofarmer.R;
 
@@ -42,39 +40,38 @@ public class World extends Fragment{
 
         initializeData();
 
-        ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
-                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT |
-                        ItemTouchHelper.DOWN | ItemTouchHelper.UP,
-                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+//        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
+//                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT |
+//                        ItemTouchHelper.DOWN | ItemTouchHelper.UP,
+//                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+//
+//            @Override
+//            public boolean onMove(RecyclerView recyclerView,
+//                                  RecyclerView.ViewHolder viewHolder,
+//                                  RecyclerView.ViewHolder target) {
+//                int from = viewHolder.getAdapterPosition();
+//                int to = target.getAdapterPosition();
+//
+//                Collections.swap(mSportsData, from, to);
+//                mAdapter.notifyItemMoved(from, to);
+//                return true;
+//            }
+//
+//            @Override
+//            public void onSwiped(RecyclerView.ViewHolder viewHolder,
+//                                 int direction) {
+//                mSportsData.remove(viewHolder.getAdapterPosition());
+//                mAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+//            }
+//        }).attachToRecyclerView(mRecyclerView);
 
-            @Override
-            public boolean onMove(RecyclerView recyclerView,
-                                  RecyclerView.ViewHolder viewHolder,
-                                  RecyclerView.ViewHolder target) {
-                int from = viewHolder.getAdapterPosition();
-                int to = target.getAdapterPosition();
-
-                Collections.swap(mSportsData, from, to);
-                mAdapter.notifyItemMoved(from, to);
-                return true;
-            }
-
-            @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder,
-                                 int direction) {
-                mSportsData.remove(viewHolder.getAdapterPosition());
-                mAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-            }
-        });
-
-        helper.attachToRecyclerView(mRecyclerView);
         return rootView;
     }
 
     private void initializeData() {
 
         String[] sportsList = getResources()
-                .getStringArray(R.array.sports_titles);
+                .getStringArray(R.array.farm_titles);
         String[] sportsInfo = getResources()
                 .getStringArray(R.array.sports_info);
         TypedArray sportsImageResources = getResources()

@@ -107,7 +107,7 @@ public class Profile extends AppCompatActivity {
 
     }
 
-    static Map<String,List<String>> getDistrictToTaluka(){
+    private static Map<String,List<String>> getDistrictToTaluka(){
 
 
         Map<String,List<String>> districtToTaluka = new HashMap<>();

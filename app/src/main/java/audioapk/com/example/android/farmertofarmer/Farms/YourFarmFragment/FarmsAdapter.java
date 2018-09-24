@@ -60,9 +60,9 @@ class FarmsAdapter extends RecyclerView.Adapter<FarmsAdapter.ViewHolder>  {
         ViewHolder(View itemView) {
             super(itemView);
 
-            mTitleText = itemView.findViewById(R.id.title);
-            mInfoText = itemView.findViewById(R.id.subTitle);
-            mSportsImage = itemView.findViewById(R.id.sportsImage);
+            mTitleText = itemView.findViewById(R.id.farm_card_title);
+            mInfoText = itemView.findViewById(R.id.farm_card_no_process_text);
+            mSportsImage = itemView.findViewById(R.id.farm_card_image);
 
             itemView.setOnClickListener(this);
         }

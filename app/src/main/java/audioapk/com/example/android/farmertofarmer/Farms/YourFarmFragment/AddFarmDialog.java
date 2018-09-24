@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import audioapk.com.example.android.farmertofarmer.R;
 
-class AddFarmDialog extends DialogFragment {
+public class AddFarmDialog extends DialogFragment {
 
 
     public interface OnInputListener {
