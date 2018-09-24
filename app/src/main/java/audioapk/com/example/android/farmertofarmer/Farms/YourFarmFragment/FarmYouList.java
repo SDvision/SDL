@@ -44,7 +44,7 @@ public class FarmYouList extends Fragment implements View.OnClickListener,AddFar
         mAdapter = new FarmsAdapter(getActivity(), mFarmData);
         mRecyclerView.setAdapter(mAdapter);
 
-        initializeData();
+//        initializeData();
 
 //        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
 //                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT |
@@ -76,16 +76,14 @@ public class FarmYouList extends Fragment implements View.OnClickListener,AddFar
 
     private void initializeData() {
 
-
         //TODO init data from room database
         String[] farmNameList = getResources().getStringArray(R.array.farm_titles);
-        String[] farmInfo = getResources().getStringArray(R.array.sports_info);
         TypedArray farmImageResources = getResources().obtainTypedArray(R.array.sports_images);
 
         mFarmData.clear();
 
         for (int i = 0; i < farmNameList.length; i++) {
-            mFarmData.add(new FarmCard(farmNameList[i], farmInfo[i],
+            mFarmData.add(new FarmCard(farmNameList[i],
                     farmImageResources.getResourceId(i, 0),0,new int[3]));
         }
 
@@ -106,7 +104,9 @@ public class FarmYouList extends Fragment implements View.OnClickListener,AddFar
 
 
     @Override
-    public void setValues() {
-        Toast.makeText(getActivity(),"Fragment",Toast.LENGTH_SHORT).show();
+    public void setValues(FarmCard farmCard) {
+        mFarmData.add(farmCard);
+        Toast.makeText(getActivity(),"Card added",Toast.LENGTH_SHORT).show();
+        mAdapter.notifyDataSetChanged();
     }
 }

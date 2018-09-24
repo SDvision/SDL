@@ -83,8 +83,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:textColor="#ffff"
+            android:layout_below="@id/farm_card_image"
+            android:textColor="@color/colorAccent"
             android:padding="8dp"
             android:text="0" />
 
@@ -92,9 +92,9 @@
             android:id="@+id/farm_card_date_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_below="@id/farm_card_image"
             android:layout_toStartOf="@+id/farm_card_date"
-            android:textColor="#ffff"
+            android:textColor="@color/colorAccent"
             android:padding="8dp"
             android:text="Date" />
 

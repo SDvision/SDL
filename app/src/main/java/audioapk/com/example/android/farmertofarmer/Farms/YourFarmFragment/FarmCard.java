@@ -4,21 +4,19 @@ package audioapk.com.example.android.farmertofarmer.Farms.YourFarmFragment;
 class FarmCard {
 
     private String title;
-    private String info;
     private final int imageResource;
-    private int landArea;
+    private double landArea;
     private int[] day;
 
 
-    FarmCard(String title, String info, int imageResource, int landArea, int[] day) {
+    FarmCard(String title, int imageResource, double landArea, int[] day) {
         this.title = title;
-        this.info = info;
         this.imageResource = imageResource;
         this.landArea = landArea;
         this.day = day;
     }
 
-    public int getLandArea() {
+    public double getLandArea() {
         return landArea;
     }
 
@@ -28,10 +26,6 @@ class FarmCard {
 
     String getTitle() {
         return title;
-    }
-
-    String getInfo() {
-        return info;
     }
 
     public int getImageResource() {

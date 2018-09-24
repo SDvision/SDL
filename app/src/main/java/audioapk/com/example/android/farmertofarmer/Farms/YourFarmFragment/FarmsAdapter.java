@@ -30,10 +30,8 @@ class FarmsAdapter extends RecyclerView.Adapter<FarmsAdapter.ViewHolder>  {
 
 
     @Override
-    public FarmsAdapter.ViewHolder onCreateViewHolder(
-            ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(mContext).
-                inflate(R.layout.farm_you_farms_card, parent, false));
+    public FarmsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.farm_you_farms_card, parent, false));
     }
 
     @Override
@@ -53,26 +51,39 @@ class FarmsAdapter extends RecyclerView.Adapter<FarmsAdapter.ViewHolder>  {
     class ViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener{
 
-        private TextView mTitleText;
-        private TextView mInfoText;
-        private ImageView mSportsImage;
+        private TextView farmTitle;
+        private ImageView farmImage;
+        private TextView landEdit,noProcess,dateEdit;
 
         ViewHolder(View itemView) {
             super(itemView);
 
-            mTitleText = itemView.findViewById(R.id.farm_card_title);
-            mInfoText = itemView.findViewById(R.id.farm_card_no_process_text);
-            mSportsImage = itemView.findViewById(R.id.farm_card_image);
+            farmTitle = itemView.findViewById(R.id.farm_card_title);
+            farmImage = itemView.findViewById(R.id.farm_card_image);
+            landEdit = itemView.findViewById(R.id.farm_card_land);
+            noProcess = itemView.findViewById(R.id.farm_card_no_process);
+            dateEdit = itemView.findViewById(R.id.farm_card_date);
+
 
             itemView.setOnClickListener(this);
         }
 
         void bindTo(FarmCard currentFarmCard){
-            mTitleText.setText(currentFarmCard.getTitle());
-            mInfoText.setText(currentFarmCard.getInfo());
+            farmTitle.setText(currentFarmCard.getTitle());
+            landEdit.setText(String.valueOf(currentFarmCard.getLandArea()));
+            noProcess.setText("0");
 
-            Glide.with(mContext).load(
-                    currentFarmCard.getImageResource()).into(mSportsImage);
+            String day_string = Integer.toString(currentFarmCard.getDay()[2]);              //day
+            String month_string = Integer.toString(currentFarmCard.getDay()[1] + 1);     //month
+            String year_string = Integer.toString(currentFarmCard.getDay()[0]);             //year
+            String dateMessage = (month_string +
+                    "/" + day_string +
+                    "/" + year_string);
+
+            dateEdit.setText(dateMessage);
+
+            Glide.with(mContext).load(currentFarmCard.getImageResource()).into(farmImage);
+
         }
 
         @Override
