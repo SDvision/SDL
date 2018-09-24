@@ -76,8 +76,8 @@ class FarmsAdapter extends RecyclerView.Adapter<FarmsAdapter.ViewHolder>  {
             String day_string = Integer.toString(currentFarmCard.getDay()[2]);              //day
             String month_string = Integer.toString(currentFarmCard.getDay()[1] + 1);     //month
             String year_string = Integer.toString(currentFarmCard.getDay()[0]);             //year
-            String dateMessage = (month_string +
-                    "/" + day_string +
+            String dateMessage = (day_string+
+                    "/" +  month_string +
                     "/" + year_string);
 
             dateEdit.setText(dateMessage);

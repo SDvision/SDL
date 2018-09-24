@@ -77,6 +77,7 @@
         <LinearLayout
             android:id="@+id/farm_add_select_land_linear"
             android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/farm_add_select_farm_linear"
             android:layout_centerHorizontal="true"
@@ -109,6 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/farm_add_select_land_linear"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
             <TextView

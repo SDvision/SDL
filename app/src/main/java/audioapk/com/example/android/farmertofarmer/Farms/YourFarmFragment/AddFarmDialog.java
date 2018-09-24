@@ -1,7 +1,7 @@
 package audioapk.com.example.android.farmertofarmer.Farms.YourFarmFragment;
 
 import android.app.Dialog;
-import android.app.DialogFragment;
+import android.support.v4.app.DialogFragment;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,9 +16,10 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.Objects;
 
+import audioapk.com.example.android.farmertofarmer.DatePickerFragment;
 import audioapk.com.example.android.farmertofarmer.R;
 
-public class AddFarmDialog extends DialogFragment {
+public class AddFarmDialog extends DialogFragment implements DatePickerFragment.OnDatePickListener {
 
 
     private Spinner selectFarmSpinner;
@@ -63,6 +64,11 @@ public class AddFarmDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
 
+                DatePickerFragment dateFragment = new DatePickerFragment();
+                dateFragment.setDatePickListener(AddFarmDialog.this);
+                dateFragment.show(getActivity().getSupportFragmentManager(),"Date Picker");
+
+
             }
         });
 
@@ -104,13 +110,13 @@ public class AddFarmDialog extends DialogFragment {
         return view;
     }
 
-    private void setDateText(int[] date){
+    public void setDateText(int[] date){
         dateInt = date;
         String day_string = Integer.toString(date[2]);              //day
         String month_string = Integer.toString(date[1] + 1);     //month
         String year_string = Integer.toString(date[0]);             //year
-        String dateMessage = (month_string +
-                "/" + day_string +
+        String dateMessage = ( day_string +
+                "/" + month_string +
                 "/" + year_string);
         dateText.setText(dateMessage);
     }
@@ -128,5 +134,9 @@ public class AddFarmDialog extends DialogFragment {
         }
     }
 
+    @Override
+    public void processDatePickerResult(int[] date) {
+        setDateText(date);
+    }
 
 }

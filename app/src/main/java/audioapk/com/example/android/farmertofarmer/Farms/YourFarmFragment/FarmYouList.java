@@ -98,7 +98,7 @@ public class FarmYouList extends Fragment implements View.OnClickListener,AddFar
 
         AddFarmDialog addFarmDialog = new AddFarmDialog();
         addFarmDialog.setOnInputListener(this);
-        addFarmDialog.show(getActivity().getFragmentManager(),"Add Farm");
+        addFarmDialog.show(getActivity().getSupportFragmentManager(),"Add Farm");
 
     }
 
