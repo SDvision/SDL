@@ -85,7 +85,7 @@ public class Profile extends AppCompatActivity {
             return;
         }
 
-        if (getIntent().hasExtra("farmerId") && getIntent().hasExtra("farmerPassword")){
+        if (getIntent().hasExtra("farmerId")){
             SharedPreferences sharedPreferences = getSharedPreferences(LogIn.SHARED_FILE,MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(LogIn.LOGIN, Objects.requireNonNull(getIntent().getExtras()).getString("farmerId"));
@@ -99,6 +99,7 @@ public class Profile extends AppCompatActivity {
         editor.apply();
 
         Intent intent = new Intent(this, FarmsMain.class);
+        finish();
         startActivity(intent);
 
 

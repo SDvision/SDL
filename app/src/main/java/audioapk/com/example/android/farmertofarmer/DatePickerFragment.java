@@ -16,7 +16,7 @@ public class DatePickerFragment extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
 
     public interface OnDatePickListener {
-        void processDatePickerResult(int[] date);
+        void processDatePickerResult(String date);
     }
     private OnDatePickListener datePickListener;
 
@@ -42,7 +42,15 @@ public class DatePickerFragment extends DialogFragment
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
 
         if (datePickListener != null && datePickListener instanceof AddFarmDialog){
-            datePickListener.processDatePickerResult(new int[]{year,month,day});
+
+            String day_string = Integer.toString(day);              //day
+            String month_string = Integer.toString(month + 1);     //month
+            String year_string = Integer.toString(year);             //year
+            String dateMessage = ( day_string +
+                    "/" + month_string +
+                    "/" + year_string);
+
+            datePickListener.processDatePickerResult(dateMessage);
         }
     }
 }

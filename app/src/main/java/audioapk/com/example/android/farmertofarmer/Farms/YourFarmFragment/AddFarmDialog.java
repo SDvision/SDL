@@ -25,7 +25,7 @@ public class AddFarmDialog extends DialogFragment implements DatePickerFragment.
     private Spinner selectFarmSpinner;
     private EditText landEditText;
     private TextView dateText;
-    private int[] dateInt;
+    private String dateString;
 
 
     public interface OnInputListener {
@@ -58,8 +58,17 @@ public class AddFarmDialog extends DialogFragment implements DatePickerFragment.
 
         dateText = view.findViewById(R.id.farm_add_date_value);//dateText.setText(new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault()).format(Calendar.getInstance().getTime()));
         final Calendar c = Calendar.getInstance();
-        dateInt = new int[]{c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DAY_OF_MONTH)};
-        setDateText(dateInt);
+
+
+        String day_string = Integer.toString(c.get(Calendar.DAY_OF_MONTH));              //day
+        String month_string = Integer.toString(c.get(Calendar.MONTH) + 1);     //month
+        String year_string = Integer.toString(c.get(Calendar.YEAR));             //year
+        dateString = ( day_string +
+                "/" + month_string +
+                "/" + year_string);
+
+
+        setDateText(dateString);
         dateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +106,7 @@ public class AddFarmDialog extends DialogFragment implements DatePickerFragment.
                 TypedArray farmImageResources = getResources().obtainTypedArray(R.array.sports_images);
                 FarmCard newFarmCard = new FarmCard(selectFarmSpinner.getSelectedItem().toString(),
                         farmImageResources.getResourceId(selectFarmSpinner.getSelectedItemPosition(), 0),
-                        Double.parseDouble(landEditText.getText().toString()),dateInt);
+                        Double.parseDouble(landEditText.getText().toString()), dateString);
                 farmImageResources.recycle();
 
                 onInputListener.setValues(newFarmCard);
@@ -110,15 +119,10 @@ public class AddFarmDialog extends DialogFragment implements DatePickerFragment.
         return view;
     }
 
-    public void setDateText(int[] date){
-        dateInt = date;
-        String day_string = Integer.toString(date[2]);              //day
-        String month_string = Integer.toString(date[1] + 1);     //month
-        String year_string = Integer.toString(date[0]);             //year
-        String dateMessage = ( day_string +
-                "/" + month_string +
-                "/" + year_string);
-        dateText.setText(dateMessage);
+    public void setDateText(String date){
+        dateString = date;
+
+        dateText.setText(date);
     }
 
     @Override
@@ -135,7 +139,7 @@ public class AddFarmDialog extends DialogFragment implements DatePickerFragment.
     }
 
     @Override
-    public void processDatePickerResult(int[] date) {
+    public void processDatePickerResult(String date) {
         setDateText(date);
     }
 

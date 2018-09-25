@@ -72,14 +72,7 @@ class FarmsAdapter extends RecyclerView.Adapter<FarmsAdapter.ViewHolder>  {
             landEdit.setText(String.valueOf(currentFarmCard.getLandArea()));
             noProcess.setText("0"); //TODO
 
-            String day_string = Integer.toString(currentFarmCard.getDay()[2]);              //day
-            String month_string = Integer.toString(currentFarmCard.getDay()[1] + 1);     //month
-            String year_string = Integer.toString(currentFarmCard.getDay()[0]);             //year
-            String dateMessage = (day_string+
-                    "/" +  month_string +
-                    "/" + year_string);
-
-            dateEdit.setText(dateMessage);
+            dateEdit.setText(currentFarmCard.getDay());
 
             Glide.with(context).load(currentFarmCard.getImageResource()).into(farmImage);
 

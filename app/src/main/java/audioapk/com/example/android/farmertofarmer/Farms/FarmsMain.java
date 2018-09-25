@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import audioapk.com.example.android.farmertofarmer.Farms.WorldFarmFragment.World;
 import audioapk.com.example.android.farmertofarmer.Farms.YourFarmFragment.FarmYouList;
@@ -36,11 +37,11 @@ public class FarmsMain extends AppCompatActivity {
             Intent intent = new Intent(this, LogIn.class);
             finish();
             startActivity(intent);
+            Toast.makeText(this,"Login not found",Toast.LENGTH_SHORT).show();
             return;
         }
         if (!sharedPreferences.contains(LogIn.STATE) && !sharedPreferences.contains(LogIn.DISTRICT)){
             Intent intent = new Intent(this, Profile.class);
-            finish();
             startActivity(intent);
             return;
         }
@@ -121,7 +122,6 @@ public class FarmsMain extends AppCompatActivity {
                 return true;
             case R.id.farm_change_profile_menu:
                 intent = new Intent(this, Profile.class);
-                finish();
                 startActivity(intent);
                 return true;
         }

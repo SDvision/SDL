@@ -42,7 +42,8 @@ public class LogIn extends AppCompatActivity {
         //TODO(a-1) database conditions should be addressed here to check login and password is correct
 
         Intent intent = new Intent(this,Profile.class);
-        intent.putExtra("farmerId",farmerIdEditText.getText().toString());
+        intent.putExtra("farmerId",farmerIdEditText.getText().toString().trim());
+        finish();
         startActivity(intent);
 
 

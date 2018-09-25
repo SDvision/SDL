@@ -65,16 +65,7 @@ public class ProcessYouList extends Fragment {
             landEdit.setText(String.valueOf(bundle.getDouble("land")));
             noProcess.setText("0");  //TODO
 
-            int [] date = bundle.getIntArray("date");
-            assert date != null;
-            String day_string = Integer.toString(date[2]);              //day
-            String month_string = Integer.toString(date[1] + 1);     //month
-            String year_string = Integer.toString(date[0]);             //year
-            String dateMessage = (day_string+
-                    "/" +  month_string +
-                    "/" + year_string);
-
-            dateEdit.setText(dateMessage);
+            dateEdit.setText(bundle.getString("date"));
 
             Glide.with(getActivity()).load(bundle.getInt("image_resource")).into(farmImage);
 

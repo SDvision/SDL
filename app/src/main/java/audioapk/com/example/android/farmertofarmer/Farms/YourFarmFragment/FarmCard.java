@@ -6,10 +6,10 @@ class FarmCard {
     private String title;
     private final int imageResource;
     private double landArea;
-    private int[] day;
+    private String day;
 
 
-    FarmCard(String title, int imageResource, double landArea, int[] day) {
+    FarmCard(String title, int imageResource, double landArea, String day) {
         this.title = title;
         this.imageResource = imageResource;
         this.landArea = landArea;
@@ -20,7 +20,7 @@ class FarmCard {
         return landArea;
     }
 
-    public int[] getDay() {
+    public String getDay() {
         return day;
     }
 
