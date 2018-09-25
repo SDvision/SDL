@@ -2,6 +2,7 @@ package audioapk.com.example.android.farmertofarmer.Processes.YourProcessesFragm
 
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -18,13 +19,17 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import audioapk.com.example.android.farmertofarmer.LogIn;
+import audioapk.com.example.android.farmertofarmer.Processes.ProcessDatabase;
 import audioapk.com.example.android.farmertofarmer.R;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class ProcessYouList extends Fragment implements AddProcessDialog.ProcessAddListener{
 
     private final ArrayList<ProcessCard> processCardList = new ArrayList<>();
     private ProcessesAdapter processesAdapter;
-
+    private ProcessDatabase processDatabase;
 
     public ProcessYouList() {
 
@@ -46,12 +51,14 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
         TextView dateEdit = cardView.findViewById(R.id.farm_card_date);
         Intent intent = getActivity().getIntent();
         Bundle bundle = intent.getExtras();
+
+        assert bundle != null;
+        int farmId = bundle.getInt("farmId");
         if (intent.hasExtra("title") &&
                 intent.hasExtra("image_resource") &&
                 intent.hasExtra("land") &&
                 intent.hasExtra("date"))
         {
-            assert bundle != null;
             farmTitle.setText(bundle.getString("title"));
             landEdit.setText(String.valueOf(bundle.getDouble("land")));
             noProcess.setText("0");  //TODO
@@ -63,8 +70,9 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
         }
 
 
-
-
+        //TODO room
+        String loginName = getActivity().getSharedPreferences(LogIn.SHARED_FILE,MODE_PRIVATE).getString(LogIn.LOGIN,"notFound");
+        processDatabase = new ProcessDatabase(getActivity(),String.valueOf(loginName+farmId));
 
 
 
@@ -81,8 +89,7 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
             }
         });
 
-        // Put initial data into the word list.
-        initData(bundle);
+
 
         // Create recycler view.
         RecyclerView recyclerView = view.findViewById(R.id.process_your_recyclerview);
@@ -95,23 +102,35 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
         // Give the recycler view a default layout manager.
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        // Put initial data into the word list.
+        initData(bundle);
+
         return view;
     }
 
     private void initData(Bundle bundle) {
 
-        //TODO find on sql and add
-//        for (int i = 0; i < 20; i++) {
-//            processCardList.addLast("Word " + i);
-//        }
+        //TODO convert to room
+        Cursor cursor = processDatabase.getAll();
+        while (cursor.moveToNext()){
+            String title = cursor.getString(1);
+            String description = cursor.getString(2);
+            String day = cursor.getString(3);
+            processCardList.add(new ProcessCard(title,day,description));
+        }
+        processesAdapter.notifyDataSetChanged();
 
     }
 
 
     @Override
     public void newProcessCardAdded(ProcessCard processCard) {
+
+        //TODO convert into room
+        processDatabase.insetFarm(processCard.getTitle(),processCard.getDescription(),processCard.getDate());
+
         processCardList.add(processCard);
         processesAdapter.notifyDataSetChanged();
-        //TODO add to database
+
     }
 }

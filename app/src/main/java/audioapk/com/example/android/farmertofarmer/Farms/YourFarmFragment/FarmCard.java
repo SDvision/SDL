@@ -8,12 +8,22 @@ class FarmCard {
     private double landArea;
     private String day;
 
+    private int databaseId;
+
 
     FarmCard(String title, int imageResource, double landArea, String day) {
         this.title = title;
         this.imageResource = imageResource;
         this.landArea = landArea;
         this.day = day;
+    }
+
+    public void setDatabaseId(int databaseId) {
+        this.databaseId = databaseId;
+    }
+
+    public int getDatabaseId() {
+        return databaseId;
     }
 
     public double getLandArea() {

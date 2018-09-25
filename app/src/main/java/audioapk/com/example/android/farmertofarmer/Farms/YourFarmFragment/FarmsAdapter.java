@@ -86,6 +86,7 @@ class FarmsAdapter extends RecyclerView.Adapter<FarmsAdapter.ViewHolder>  {
                     currentFarmCard.getImageResource());
             detailIntent.putExtra("land",currentFarmCard.getLandArea());
             detailIntent.putExtra("date",currentFarmCard.getDay());
+            detailIntent.putExtra("farmId",currentFarmCard.getDatabaseId());
             context.startActivity(detailIntent);
         }
     }

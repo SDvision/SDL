@@ -24,6 +24,7 @@ public class AddProcessDialog extends DialogFragment implements DatePickerFragme
     private TextView dateText;
     private String dateString;
 
+
     public AddProcessDialog() {}
 
     public interface ProcessAddListener{
@@ -43,6 +44,7 @@ public class AddProcessDialog extends DialogFragment implements DatePickerFragme
         titleEdit = view.findViewById(R.id.process_add_dialog_title_edit);
         descriptionEdit = view.findViewById(R.id.process_add_dialog_description_edit);
         dateText = view.findViewById(R.id.process_add_date_value);
+
 
 
         final Calendar c = Calendar.getInstance();

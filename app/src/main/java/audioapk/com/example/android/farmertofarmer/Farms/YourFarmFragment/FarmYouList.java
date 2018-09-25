@@ -91,11 +91,14 @@ public class FarmYouList extends Fragment implements View.OnClickListener,AddFar
         Cursor cursor = farmDatabase.getAll();
 
         while (cursor.moveToNext()){
+            int id = cursor.getInt(0);
             String title = cursor.getString(1);
             int img = cursor.getInt(2);
             double land = Double.parseDouble(cursor.getString(3));
             String day = cursor.getString(4);
-            mFarmData.add(new FarmCard(title,img,land,day));
+            FarmCard farmCard = new FarmCard(title,img,land,day);
+            farmCard.setDatabaseId(id);
+            mFarmData.add(farmCard);
 
         }
 
@@ -125,12 +128,15 @@ public class FarmYouList extends Fragment implements View.OnClickListener,AddFar
 
     @Override
     public void setValues(FarmCard farmCard) {
-        mFarmData.add(farmCard);
+
         Toast.makeText(getActivity(),"Card added",Toast.LENGTH_SHORT).show();
-        mAdapter.notifyDataSetChanged();
+
 
         //TODO convert into room
-        farmDatabase.insetFarm(farmCard.getTitle(),farmCard.getImageResource(),String.valueOf(farmCard.getLandArea()),farmCard.getDay());
+        int id = farmDatabase.insetFarm(farmCard.getTitle(),farmCard.getImageResource(),String.valueOf(farmCard.getLandArea()),farmCard.getDay());
+        farmCard.setDatabaseId(id);
 
+        mFarmData.add(farmCard);
+        mAdapter.notifyDataSetChanged();
     }
 }
