@@ -35,8 +35,7 @@ class FarmsAdapter extends RecyclerView.Adapter<FarmsAdapter.ViewHolder>  {
     }
 
     @Override
-    public void onBindViewHolder(FarmsAdapter.ViewHolder holder,
-                                 int position) {
+    public void onBindViewHolder(FarmsAdapter.ViewHolder holder, int position) {
         FarmCard currentFarmCard = farmsData.get(position);
 
         holder.bindTo(currentFarmCard);

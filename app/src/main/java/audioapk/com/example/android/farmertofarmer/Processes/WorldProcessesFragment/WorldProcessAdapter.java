@@ -23,7 +23,7 @@ class WorldProcessAdapter extends RecyclerView.Adapter<WorldProcessAdapter.WordV
 
             WordViewHolder(View itemView, WorldProcessAdapter adapter) {
                 super(itemView);
-                wordItemView = itemView.findViewById(R.id.word);
+                wordItemView = itemView.findViewById(R.id.process_card_title);
                 this.mAdapter = adapter;
                 itemView.setOnClickListener(this);
             }

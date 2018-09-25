@@ -20,7 +20,7 @@ public class ProcessesMain extends AppCompatActivity {
 
         final TabLayout tabLayout = findViewById(R.id.tab_layout2);
 
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.farm_you_farms));
+        tabLayout.addTab(tabLayout.newTab().setText("My processes"));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.farm_world));
 
 

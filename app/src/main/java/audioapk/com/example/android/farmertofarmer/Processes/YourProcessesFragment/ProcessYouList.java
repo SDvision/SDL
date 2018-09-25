@@ -16,20 +16,14 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 import audioapk.com.example.android.farmertofarmer.R;
 
-public class ProcessYouList extends Fragment {
+public class ProcessYouList extends Fragment implements AddProcessDialog.ProcessAddListener{
 
-    private final LinkedList<String> mWordList = new LinkedList<>();
-
-    private RecyclerView mRecyclerView;
-    private ProcessesAdapter mAdapter;
-
-    private TextView farmTitle,landEdit,noProcess,dateEdit;
-    private ImageView farmImage;
-
+    private final ArrayList<ProcessCard> processCardList = new ArrayList<>();
+    private ProcessesAdapter processesAdapter;
 
 
     public ProcessYouList() {
@@ -45,11 +39,11 @@ public class ProcessYouList extends Fragment {
 
 
         CardView cardView = view.findViewById(R.id.process_farm_card);
-        farmTitle = cardView.findViewById(R.id.farm_card_title);
-        farmImage = cardView.findViewById(R.id.farm_card_image);
-        landEdit = cardView.findViewById(R.id.farm_card_land);
-        noProcess = cardView.findViewById(R.id.farm_card_no_process);
-        dateEdit = cardView.findViewById(R.id.farm_card_date);
+        TextView farmTitle = cardView.findViewById(R.id.farm_card_title);
+        ImageView farmImage = cardView.findViewById(R.id.farm_card_image);
+        TextView landEdit = cardView.findViewById(R.id.farm_card_land);
+        TextView noProcess = cardView.findViewById(R.id.farm_card_no_process);
+        TextView dateEdit = cardView.findViewById(R.id.farm_card_date);
         Intent intent = getActivity().getIntent();
         Bundle bundle = intent.getExtras();
         if (intent.hasExtra("title") &&
@@ -57,9 +51,6 @@ public class ProcessYouList extends Fragment {
                 intent.hasExtra("land") &&
                 intent.hasExtra("date"))
         {
-
-
-
             assert bundle != null;
             farmTitle.setText(bundle.getString("title"));
             landEdit.setText(String.valueOf(bundle.getDouble("land")));
@@ -83,13 +74,10 @@ public class ProcessYouList extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int wordListSize = mWordList.size();
-                // Add a new word to the wordList.
-                mWordList.addLast("+ Word " + wordListSize);
-                // Notify the adapter, that the data has changed.
-                mRecyclerView.getAdapter().notifyItemInserted(wordListSize);
-                // Scroll to the bottom.
-                mRecyclerView.smoothScrollToPosition(wordListSize);
+
+                AddProcessDialog addProcessDialog = new AddProcessDialog();
+                addProcessDialog.setProcessAddListener(ProcessYouList.this);
+                addProcessDialog.show(getActivity().getSupportFragmentManager(),"Add Farm");
             }
         });
 
@@ -97,15 +85,15 @@ public class ProcessYouList extends Fragment {
         initData(bundle);
 
         // Create recycler view.
-        mRecyclerView = view.findViewById(R.id.recyclerView2);
+        RecyclerView recyclerView = view.findViewById(R.id.process_your_recyclerview);
         // Create an adapter and supply the data to be displayed.
-        mAdapter = new ProcessesAdapter(getActivity(), mWordList);
+        processesAdapter = new ProcessesAdapter(getActivity(), processCardList);
         // Connect the adapter with the recycler view.
-        mRecyclerView.setAdapter(mAdapter);
+        recyclerView.setAdapter(processesAdapter);
 
-        mRecyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setNestedScrollingEnabled(false);
         // Give the recycler view a default layout manager.
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return view;
     }
@@ -113,11 +101,17 @@ public class ProcessYouList extends Fragment {
     private void initData(Bundle bundle) {
 
         //TODO find on sql and add
-        for (int i = 0; i < 20; i++) {
-            mWordList.addLast("Word " + i);
-        }
+//        for (int i = 0; i < 20; i++) {
+//            processCardList.addLast("Word " + i);
+//        }
 
     }
 
 
+    @Override
+    public void newProcessCardAdded(ProcessCard processCard) {
+        processCardList.add(processCard);
+        processesAdapter.notifyDataSetChanged();
+        //TODO add to database
+    }
 }

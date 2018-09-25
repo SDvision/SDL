@@ -11,6 +11,7 @@ import android.widget.DatePicker;
 import java.util.Calendar;
 
 import audioapk.com.example.android.farmertofarmer.Farms.YourFarmFragment.AddFarmDialog;
+import audioapk.com.example.android.farmertofarmer.Processes.YourProcessesFragment.AddProcessDialog;
 
 public class DatePickerFragment extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
@@ -41,7 +42,7 @@ public class DatePickerFragment extends DialogFragment
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
 
-        if (datePickListener != null && datePickListener instanceof AddFarmDialog){
+        if (datePickListener != null && (datePickListener instanceof AddFarmDialog || datePickListener instanceof AddProcessDialog)){
 
             String day_string = Integer.toString(day);              //day
             String month_string = Integer.toString(month + 1);     //month
@@ -52,6 +53,8 @@ public class DatePickerFragment extends DialogFragment
 
             datePickListener.processDatePickerResult(dateMessage);
         }
+
+
     }
 }
 

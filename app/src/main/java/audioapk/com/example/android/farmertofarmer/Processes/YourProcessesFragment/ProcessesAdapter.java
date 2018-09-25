@@ -24,50 +24,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 import audioapk.com.example.android.farmertofarmer.DetailProcess;
 import audioapk.com.example.android.farmertofarmer.R;
 
 class ProcessesAdapter extends RecyclerView.Adapter<ProcessesAdapter.WordViewHolder> {
 
-    private final LinkedList<String> mWordList;
+    private final ArrayList<ProcessCard> cardList;
     private final LayoutInflater mInflater;
     private Context context;
 
-    class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        final TextView wordItemView;
-        final ProcessesAdapter mAdapter;
-
-        WordViewHolder(View itemView, ProcessesAdapter adapter) {
-            super(itemView);
-            wordItemView = itemView.findViewById(R.id.word);
-            this.mAdapter = adapter;
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            int mPosition = getLayoutPosition();
-
-            String element = mWordList.get(mPosition);
-            Intent detailIntent = new Intent(context, DetailProcess.class);
-            detailIntent.putExtra("title", element+" Clicked!");
-
-            mWordList.set(mPosition, "Clicked! " + element);
-            mAdapter.notifyDataSetChanged();
-
-
-            context.startActivity(detailIntent);
-
-        }
-    }
-
-    public ProcessesAdapter(Context context, LinkedList<String> wordList) {
+    public ProcessesAdapter(Context context, ArrayList<ProcessCard> cardList) {
         mInflater = LayoutInflater.from(context);
-        this.mWordList = wordList;
+        this.cardList = cardList;
         this.context = context;
     }
+
 
     @Override
     public ProcessesAdapter.WordViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -75,16 +48,51 @@ class ProcessesAdapter extends RecyclerView.Adapter<ProcessesAdapter.WordViewHol
         return new WordViewHolder(mItemView, this);
     }
 
+
+    class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView dateText,titleText;
+        private ProcessesAdapter processesAdapter;
+
+        WordViewHolder(View itemView, ProcessesAdapter processesAdapter) {
+            super(itemView);
+            dateText = itemView.findViewById(R.id.process_card_date);
+            titleText = itemView.findViewById(R.id.process_card_title);
+            this.processesAdapter = processesAdapter;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int mPosition = getLayoutPosition();
+
+            ProcessCard element = cardList.get(mPosition);
+            Intent detailIntent = new Intent(context, DetailProcess.class);
+            detailIntent.putExtra("title", element.getTitle());
+            detailIntent.putExtra("description",element.getDescription());
+            detailIntent.putExtra("date",element.getDate());
+
+
+            context.startActivity(detailIntent);
+
+        }
+
+        private void bind(ProcessCard currentCard) {
+            titleText.setText(currentCard.getTitle());
+            dateText.setText(currentCard.getDate());
+        }
+    }
+
+
     @Override
     public void onBindViewHolder(ProcessesAdapter.WordViewHolder holder, int position) {
 
-        String mCurrent = mWordList.get(position);
-        holder.wordItemView.setText(mCurrent);
+        ProcessCard currentCard = cardList.get(position);
+        holder.bind(currentCard);
     }
 
     @Override
     public int getItemCount() {
-        return mWordList.size();
+        return cardList.size();
     }
 
 
