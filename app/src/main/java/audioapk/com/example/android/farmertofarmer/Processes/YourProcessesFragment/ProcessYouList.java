@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import audioapk.com.example.android.farmertofarmer.LogIn;
+import audioapk.com.example.android.farmertofarmer.Processes.FarmWorldDatabase;
 import audioapk.com.example.android.farmertofarmer.Processes.ProcessDatabase;
 import audioapk.com.example.android.farmertofarmer.R;
 
@@ -31,6 +32,14 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
     private ProcessesAdapter processesAdapter;
     private ProcessDatabase processDatabase;
     private Button finishFarmButton;
+    private FarmWorldDatabase farmWorldDatabase;
+    private FloatingActionButton fab;
+
+
+    //TODO room
+    private String processDPId,titleFarm,landFarm,dateFarm;
+    private int imgFarm;
+
 
     public ProcessYouList() {
 
@@ -44,6 +53,7 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
 
 
         finishFarmButton = view.findViewById(R.id.process_you_farm_finish);
+        fab = view.findViewById(R.id.add_farm_floating_button2);
         CardView cardView = view.findViewById(R.id.process_farm_card);
         TextView farmTitle = cardView.findViewById(R.id.farm_card_title);
         ImageView farmImage = cardView.findViewById(R.id.farm_card_image);
@@ -54,56 +64,51 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
 
         assert bundle != null;
         int farmId = bundle.getInt("farmId");
-        if (intent.hasExtra("title") &&
-                intent.hasExtra("image_resource") &&
-                intent.hasExtra("land") &&
-                intent.hasExtra("date"))
-        {
-            farmTitle.setText(bundle.getString("title"));
-            landEdit.setText(String.valueOf(bundle.getDouble("land")));
+//        if (intent.hasExtra("title") && intent.hasExtra("image_resource") && intent.hasExtra("land") && intent.hasExtra("date")) {
+        titleFarm = bundle.getString("title");
+        farmTitle.setText(titleFarm);
+        landFarm = String.valueOf(bundle.getDouble("land"));
+        landEdit.setText(landFarm);
+        dateFarm = bundle.getString("date");
+        dateEdit.setText(dateFarm);
+        imgFarm = bundle.getInt("image_resource");
+        Glide.with(getActivity()).load(imgFarm).into(farmImage);
 
-            dateEdit.setText(bundle.getString("date"));
 
-            Glide.with(getActivity()).load(bundle.getInt("image_resource")).into(farmImage);
-
-        }
 
 
         //TODO room
         String loginName = getActivity().getSharedPreferences(LogIn.SHARED_FILE,MODE_PRIVATE).getString(LogIn.LOGIN,"notFound");
-        processDatabase = new ProcessDatabase(getActivity(),String.valueOf(loginName+farmId));
+        processDPId = String.valueOf(loginName+farmId);
+        processDatabase = new ProcessDatabase(getActivity(),processDPId);
+        farmWorldDatabase = new FarmWorldDatabase(getActivity());
+
+
+        int profit = farmWorldDatabase.CheckIfFarmIsFinished(processDPId);
+        if ( profit != FarmWorldDatabase.NOT_FOUND){
+            finishFarmButton.setText("This farm is finished with "+profit+" profit");
+            fab.setVisibility(View.INVISIBLE);
+        }else {
+            //TODO room if already finished don't add dialog
+            finishFarmButton.setOnClickListener(this);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    AddProcessDialog addProcessDialog = new AddProcessDialog();
+                    addProcessDialog.setProcessAddListener(ProcessYouList.this);
+                    addProcessDialog.show(getActivity().getSupportFragmentManager(),"Add Farm");
+                }
+            });
+        }
 
 
 
-
-
-        finishFarmButton.setOnClickListener(this);
-
-        FloatingActionButton fab = view.findViewById(R.id.add_farm_floating_button2);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                AddProcessDialog addProcessDialog = new AddProcessDialog();
-                addProcessDialog.setProcessAddListener(ProcessYouList.this);
-                addProcessDialog.show(getActivity().getSupportFragmentManager(),"Add Farm");
-            }
-        });
-
-
-
-        // Create recycler view.
         RecyclerView recyclerView = view.findViewById(R.id.process_your_recyclerview);
-        // Create an adapter and supply the data to be displayed.
         processesAdapter = new ProcessesAdapter(getActivity(), processCardList);
-        // Connect the adapter with the recycler view.
         recyclerView.setAdapter(processesAdapter);
-
         recyclerView.setNestedScrollingEnabled(false);
-        // Give the recycler view a default layout manager.
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        // Put initial data into the word list.
         initData(bundle);
 
         return view;
@@ -138,7 +143,7 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
     @Override
     public void onClick(View v) {
 
-        //TODO if already finished don't add dialog
+
         FinishFarmDialog finishProcessDialog = new FinishFarmDialog();
         finishProcessDialog.setProfitListener(this);
         finishProcessDialog.show(getActivity().getSupportFragmentManager(),"Add Farm");
@@ -150,9 +155,12 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
     public void profitListen(int profit) {
 
 
-        //TODO sql world
-        Toast.makeText(getActivity(),"Add SQL here",Toast.LENGTH_SHORT).show();
+        //TODO room
+        Toast.makeText(getActivity(),"added to sql",Toast.LENGTH_SHORT).show();
+        farmWorldDatabase.insetFarm(titleFarm,processDPId,imgFarm,landFarm,dateFarm,profit);
 
+        finishFarmButton.setText("This farm is finished with "+profit+" profit");
+        fab.setVisibility(View.INVISIBLE);
 
 
 
