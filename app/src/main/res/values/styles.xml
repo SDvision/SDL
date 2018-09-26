@@ -23,4 +23,10 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="titleCard" parent="@style/TextAppearance.AppCompat.Headline">
+        <item name="android:shadowColor">#55000000</item>
+        <item name="android:shadowDx">6</item>
+        <item name="android:shadowDy">6</item>
+        <item name="android:shadowRadius">6</item>
+    </style>
 </resources>

@@ -77,16 +77,6 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
         TextView landEdit = cardView.findViewById(R.id.farm_card_land);
         TextView dateEdit = cardView.findViewById(R.id.farm_card_date);
 
-//        Intent intent = getActivity().getIntent();
-//        Bundle bundle = intent.getExtras();
-//        assert bundle != null;
-//        farmId = bundle.getInt("farmId");
-//        titleFarm = bundle.getString("title");
-//        landFarm = String.valueOf(bundle.getDouble("land"));
-//        dateFarm = bundle.getString("date");
-//        imgFarm = bundle.getInt("image_resource");
-
-
         farmTitle.setText(titleFarm);
         landEdit.setText(landFarm);
         dateEdit.setText(dateFarm);

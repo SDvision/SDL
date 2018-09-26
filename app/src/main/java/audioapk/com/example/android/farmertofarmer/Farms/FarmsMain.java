@@ -48,8 +48,8 @@ public class FarmsMain extends AppCompatActivity {
 
         final TabLayout tabLayout = findViewById(R.id.tab_layout);
 
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.farm_you_farms));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.farm_world));
+        tabLayout.addTab(tabLayout.newTab().setText("My Farms"));
+        tabLayout.addTab(tabLayout.newTab().setText("World Farms"));
 
 
 

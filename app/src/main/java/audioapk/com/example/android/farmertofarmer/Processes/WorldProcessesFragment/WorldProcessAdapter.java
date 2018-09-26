@@ -1,6 +1,8 @@
 package audioapk.com.example.android.farmertofarmer.Processes.WorldProcessesFragment;
 
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,35 +12,45 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import audioapk.com.example.android.farmertofarmer.Processes.YourProcessesFragment.ProcessYouList;
 import audioapk.com.example.android.farmertofarmer.R;
+
+import static audioapk.com.example.android.farmertofarmer.Processes.FarmWorldDatabase.NOT_FOUND;
 
 class WorldProcessAdapter extends RecyclerView.Adapter<WorldProcessAdapter.WordViewHolder> {
 
-        private final ArrayList<WorldProcessCard> mWordList;
-        private final LayoutInflater mInflater;
+        private final ArrayList<WorldProcessCard> cardList;
+        private final Context context;
+
+        private String title;
+        private int img;
 
         class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
             private final TextView profitText;
             private final TextView dateText;
-            private final WorldProcessAdapter mAdapter;
 
             WordViewHolder(View itemView, WorldProcessAdapter adapter) {
                 super(itemView);
                 profitText = itemView.findViewById(R.id.process_card_title);
                 dateText = itemView.findViewById(R.id.process_card_date);
-                this.mAdapter = adapter;
                 itemView.setOnClickListener(this);
             }
 
             @Override
             public void onClick(View view) {
-                int mPosition = getLayoutPosition();
 
-//                String element = mWordList.get(mPosition);
-//
-//                mWordList.set(mPosition, "Clicked! " + element);
-//                mAdapter.notifyDataSetChanged();
+                WorldProcessCard element = cardList.get(getLayoutPosition());
+
+                ProcessYouList processYouList = new ProcessYouList();
+                processYouList.setValues(title,element.getLand(),element.getDate(),img,NOT_FOUND);
+                processYouList.setNotMineFarm(element.getProcessDB());
+                final FragmentTransaction ft = ((FragmentActivity)context).getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.world_root_frame, processYouList);
+                ft.addToBackStack(null);
+                ft.commit();
+
+
             }
 
             void bind(WorldProcessCard worldProcessCard) {
@@ -49,15 +61,17 @@ class WorldProcessAdapter extends RecyclerView.Adapter<WorldProcessAdapter.WordV
             }
         }
 
-        public WorldProcessAdapter(Context context, ArrayList<WorldProcessCard> wordList) {
-            mInflater = LayoutInflater.from(context);
-            this.mWordList = wordList;
+        public WorldProcessAdapter(Context context, ArrayList<WorldProcessCard> wordList,String title,int img) {
+            this.context = context;
+            this.cardList = wordList;
+            this.title = title;
+            this.img = img;
         }
 
         @Override
         public WorldProcessAdapter.WordViewHolder onCreateViewHolder(ViewGroup parent,
                                                                                                                                               int viewType) {
-            View mItemView = mInflater.inflate(R.layout.process_you_processes_card, parent, false);
+            View mItemView = LayoutInflater.from(context).inflate(R.layout.process_you_processes_card, parent, false);
             return new WordViewHolder(mItemView, this);
         }
 
@@ -65,12 +79,12 @@ class WorldProcessAdapter extends RecyclerView.Adapter<WorldProcessAdapter.WordV
         public void onBindViewHolder(WordViewHolder holder, int position) {
 
 
-            holder.bind(mWordList.get(position));
+            holder.bind(cardList.get(position));
         }
 
         @Override
         public int getItemCount() {
-            return mWordList.size();
+            return cardList.size();
         }
 
 

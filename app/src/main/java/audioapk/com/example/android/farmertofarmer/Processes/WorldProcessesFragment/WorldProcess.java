@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -35,16 +36,19 @@ public class WorldProcess extends Fragment {
     }
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.process_world, container, false);
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View view =  inflater.inflate(R.layout.process_world, container, false);
         farmWorldDatabase = new FarmWorldDatabase(getActivity());
+        TextView titleText = view.findViewById(R.id.world_all_farms_list_title);
+        String titleTextBuilder = title+" Farms";
+        titleText.setText(titleTextBuilder);
 
 
         mRecyclerView = view.findViewById(R.id.recyclerView3);
-        mAdapter = new WorldProcessAdapter(getActivity(), cardList);
+        mAdapter = new WorldProcessAdapter(getActivity(), cardList,title,img);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -55,6 +59,9 @@ public class WorldProcess extends Fragment {
     }
 
     private void initData() {
+
+        //TODO room
+        cardList.clear();
         Cursor cursor = farmWorldDatabase.findFarms(title);
         while (cursor.moveToNext()){
             int id = cursor.getInt(0);

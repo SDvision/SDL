@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import audioapk.com.example.android.farmertofarmer.Processes.WorldProcessesFragment.WorldProcess;
+import audioapk.com.example.android.farmertofarmer.Processes.WorldProcessesFragment.WorldProcessRootFragment;
 import audioapk.com.example.android.farmertofarmer.Processes.YourProcessesFragment.ProcessYouList;
 import audioapk.com.example.android.farmertofarmer.R;
 
@@ -30,14 +30,14 @@ public class ProcessesMain extends AppCompatActivity {
         final ProcessYouList processYouList = new ProcessYouList();
         processYouList.setValues(titleFarm,landFarm,dateFarm,imgFarm,farmId);
 
-        final WorldProcess worldProcess = new WorldProcess();
-        worldProcess.setCardValues(titleFarm,imgFarm);
+        final WorldProcessRootFragment worldProcessRootFragment = new WorldProcessRootFragment();
+        worldProcessRootFragment.setCardValues(titleFarm,imgFarm);
 
 
 
         final TabLayout tabLayout = findViewById(R.id.tab_layout2);
         tabLayout.addTab(tabLayout.newTab().setText("My processes"));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.farm_world));
+        tabLayout.addTab(tabLayout.newTab().setText("World Process"));
 
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -49,7 +49,7 @@ public class ProcessesMain extends AppCompatActivity {
             public Fragment getItem(int position) {
                 switch (position) {
                     case 0: return processYouList;
-                    case 1: return worldProcess;
+                    case 1: return worldProcessRootFragment;
                     default: return null;
                 }
             }

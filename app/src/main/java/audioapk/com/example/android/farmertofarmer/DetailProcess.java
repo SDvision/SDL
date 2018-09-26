@@ -2,11 +2,7 @@ package audioapk.com.example.android.farmertofarmer;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
 
 public class DetailProcess extends AppCompatActivity {
 
@@ -15,17 +11,19 @@ public class DetailProcess extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_process);
 
-        TextView title = findViewById(R.id.titleDetail);
+        Bundle bundle = getIntent().getExtras();
 
-        ImageView image = findViewById(R.id.processImageDetail);
+        TextView title = findViewById(R.id.titleDetail),
+                description = findViewById(R.id.process_description_detail),
+                date = findViewById(R.id.dateDetail);
+        assert bundle != null;
+        title.setText(bundle.getString("title"));
+        description.setText(bundle.getString("description"));
+        date.setText(bundle.getString("date"));
 
-        // Set the text from the Intent extra.
-        title.setText(getIntent().getStringExtra("title"));
-        Toast.makeText(this,title.getText().toString(),Toast.LENGTH_SHORT).show();
 
-        // Load the image using the Glide library and the Intent extra.
-        Glide.with(this).load(getIntent().getIntExtra("image_resource",0))
-                .into(image);
+
+
     }
 
 }
