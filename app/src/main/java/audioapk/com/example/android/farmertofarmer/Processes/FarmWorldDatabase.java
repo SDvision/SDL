@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 import android.widget.Toast;
 
 public class FarmWorldDatabase extends SQLiteOpenHelper{
@@ -63,5 +62,14 @@ public class FarmWorldDatabase extends SQLiteOpenHelper{
         return profit;
     }
 
+
+
+    public Cursor findFarms(String title) {
+
+        sqLiteDatabase = getReadableDatabase();
+        String Query = "Select * from " + DB_TABLE_FARM + " where title = '" + title+"'";
+        Cursor cursor = sqLiteDatabase.rawQuery(Query, null);
+        return cursor;
+    }
 
 }

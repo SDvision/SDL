@@ -12,7 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import audioapk.com.example.android.farmertofarmer.Farms.WorldFarmFragment.World;
+import audioapk.com.example.android.farmertofarmer.Farms.WorldFarmFragment.WorldRootFragment;
 import audioapk.com.example.android.farmertofarmer.Farms.YourFarmFragment.FarmYouList;
 import audioapk.com.example.android.farmertofarmer.LogIn;
 import audioapk.com.example.android.farmertofarmer.Profile;
@@ -63,7 +63,7 @@ public class FarmsMain extends AppCompatActivity {
             public Fragment getItem(int position) {
                 switch (position) {
                     case 0: return new FarmYouList();
-                    case 1: return new World();
+                    case 1: return new WorldRootFragment();
                     default: return null;
                 }
             }

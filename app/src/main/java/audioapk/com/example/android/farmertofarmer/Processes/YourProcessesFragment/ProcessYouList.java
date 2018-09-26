@@ -1,7 +1,6 @@
 package audioapk.com.example.android.farmertofarmer.Processes.YourProcessesFragment;
 
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,7 +15,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 import audioapk.com.example.android.farmertofarmer.LogIn;
@@ -38,12 +39,28 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
 
     //TODO room
     private String processDPId,titleFarm,landFarm,dateFarm;
-    private int imgFarm;
+    private int imgFarm,farmId;
+    private boolean notMineFarm = true;
 
 
     public ProcessYouList() {
 
     }
+
+    public void setValues(String titleFarm,String landFarm,String dateFarm,int imgFarm,int farmId){
+        this.titleFarm=titleFarm;
+        this.landFarm=landFarm;
+        this.dateFarm=dateFarm;
+        this.imgFarm=imgFarm;
+        this.farmId=farmId;
+    }
+
+    public void setNotMineFarm(String processDPId){
+        this.processDPId = processDPId;
+        this.notMineFarm = false;
+    }
+
+
 
 
     @Override
@@ -59,27 +76,29 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
         ImageView farmImage = cardView.findViewById(R.id.farm_card_image);
         TextView landEdit = cardView.findViewById(R.id.farm_card_land);
         TextView dateEdit = cardView.findViewById(R.id.farm_card_date);
-        Intent intent = getActivity().getIntent();
-        Bundle bundle = intent.getExtras();
 
-        assert bundle != null;
-        int farmId = bundle.getInt("farmId");
-//        if (intent.hasExtra("title") && intent.hasExtra("image_resource") && intent.hasExtra("land") && intent.hasExtra("date")) {
-        titleFarm = bundle.getString("title");
+//        Intent intent = getActivity().getIntent();
+//        Bundle bundle = intent.getExtras();
+//        assert bundle != null;
+//        farmId = bundle.getInt("farmId");
+//        titleFarm = bundle.getString("title");
+//        landFarm = String.valueOf(bundle.getDouble("land"));
+//        dateFarm = bundle.getString("date");
+//        imgFarm = bundle.getInt("image_resource");
+
+
         farmTitle.setText(titleFarm);
-        landFarm = String.valueOf(bundle.getDouble("land"));
         landEdit.setText(landFarm);
-        dateFarm = bundle.getString("date");
         dateEdit.setText(dateFarm);
-        imgFarm = bundle.getInt("image_resource");
         Glide.with(getActivity()).load(imgFarm).into(farmImage);
 
 
-
-
         //TODO room
-        String loginName = getActivity().getSharedPreferences(LogIn.SHARED_FILE,MODE_PRIVATE).getString(LogIn.LOGIN,"notFound");
-        processDPId = String.valueOf(loginName+farmId);
+        if (notMineFarm) {
+            String loginName = getActivity().getSharedPreferences(LogIn.SHARED_FILE, MODE_PRIVATE).getString(LogIn.LOGIN, "notFound");
+            processDPId = String.valueOf(loginName + farmId);
+        }
+
         processDatabase = new ProcessDatabase(getActivity(),processDPId);
         farmWorldDatabase = new FarmWorldDatabase(getActivity());
 
@@ -109,12 +128,12 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
         recyclerView.setAdapter(processesAdapter);
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        initData(bundle);
+        initData();
 
         return view;
     }
 
-    private void initData(Bundle bundle) {
+    private void initData() {
 
         //TODO convert to room
         Cursor cursor = processDatabase.getAll();

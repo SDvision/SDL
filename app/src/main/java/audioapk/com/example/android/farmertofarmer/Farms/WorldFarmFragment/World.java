@@ -70,17 +70,18 @@ public class World extends Fragment{
 
     private void initializeData() {
 
+        //TODO room database
+
+
         String[] sportsList = getResources()
                 .getStringArray(R.array.farm_titles);
-        String[] sportsInfo = getResources()
-                .getStringArray(R.array.sports_info);
         TypedArray sportsImageResources = getResources()
                 .obtainTypedArray(R.array.sports_images);
 
         mSportsData.clear();
 
         for (int i = 0; i < sportsList.length; i++) {
-            mSportsData.add(new WorldFarmCard(sportsList[i], sportsInfo[i],
+            mSportsData.add(new WorldFarmCard(sportsList[i],
                     sportsImageResources.getResourceId(i, 0)));
         }
 

@@ -7,23 +7,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.LinkedList;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import audioapk.com.example.android.farmertofarmer.R;
 
 class WorldProcessAdapter extends RecyclerView.Adapter<WorldProcessAdapter.WordViewHolder> {
 
-        private final LinkedList<String> mWordList;
+        private final ArrayList<WorldProcessCard> mWordList;
         private final LayoutInflater mInflater;
 
-        class WordViewHolder extends RecyclerView.ViewHolder
-                implements View.OnClickListener {
-            final TextView wordItemView;
-            final WorldProcessAdapter mAdapter;
+        class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+            private final TextView profitText;
+            private final TextView dateText;
+            private final WorldProcessAdapter mAdapter;
 
             WordViewHolder(View itemView, WorldProcessAdapter adapter) {
                 super(itemView);
-                wordItemView = itemView.findViewById(R.id.process_card_title);
+                profitText = itemView.findViewById(R.id.process_card_title);
+                dateText = itemView.findViewById(R.id.process_card_date);
                 this.mAdapter = adapter;
                 itemView.setOnClickListener(this);
             }
@@ -32,14 +35,21 @@ class WorldProcessAdapter extends RecyclerView.Adapter<WorldProcessAdapter.WordV
             public void onClick(View view) {
                 int mPosition = getLayoutPosition();
 
-                String element = mWordList.get(mPosition);
+//                String element = mWordList.get(mPosition);
+//
+//                mWordList.set(mPosition, "Clicked! " + element);
+//                mAdapter.notifyDataSetChanged();
+            }
 
-                mWordList.set(mPosition, "Clicked! " + element);
-                mAdapter.notifyDataSetChanged();
+            void bind(WorldProcessCard worldProcessCard) {
+                double profitPerLand = worldProcessCard.getProfit()/Double.parseDouble(worldProcessCard.getLand());
+                String ppl = new DecimalFormat("0.00##").format(profitPerLand);
+                profitText.setText(ppl);
+                dateText.setText(worldProcessCard.getDate());
             }
         }
 
-        public WorldProcessAdapter(Context context, LinkedList<String> wordList) {
+        public WorldProcessAdapter(Context context, ArrayList<WorldProcessCard> wordList) {
             mInflater = LayoutInflater.from(context);
             this.mWordList = wordList;
         }
@@ -54,8 +64,8 @@ class WorldProcessAdapter extends RecyclerView.Adapter<WorldProcessAdapter.WordV
         @Override
         public void onBindViewHolder(WordViewHolder holder, int position) {
 
-            String mCurrent = mWordList.get(position);
-            holder.wordItemView.setText(mCurrent);
+
+            holder.bind(mWordList.get(position));
         }
 
         @Override
