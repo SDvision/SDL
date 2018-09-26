@@ -50,7 +50,7 @@ class FarmsAdapter extends RecyclerView.Adapter<FarmsAdapter.ViewHolder>  {
     class ViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener{
 
-        private TextView farmTitle,landEdit,noProcess,dateEdit;
+        private TextView farmTitle,landEdit,dateEdit;
         private ImageView farmImage;
 
         ViewHolder(View itemView) {
@@ -59,7 +59,6 @@ class FarmsAdapter extends RecyclerView.Adapter<FarmsAdapter.ViewHolder>  {
             farmTitle = itemView.findViewById(R.id.farm_card_title);
             farmImage = itemView.findViewById(R.id.farm_card_image);
             landEdit = itemView.findViewById(R.id.farm_card_land);
-            noProcess = itemView.findViewById(R.id.farm_card_no_process);
             dateEdit = itemView.findViewById(R.id.farm_card_date);
 
 
@@ -69,8 +68,6 @@ class FarmsAdapter extends RecyclerView.Adapter<FarmsAdapter.ViewHolder>  {
         void bindTo(FarmCard currentFarmCard){
             farmTitle.setText(currentFarmCard.getTitle());
             landEdit.setText(String.valueOf(currentFarmCard.getLandArea()));
-            noProcess.setText("0"); //TODO
-
             dateEdit.setText(currentFarmCard.getDay());
 
             Glide.with(context).load(currentFarmCard.getImageResource()).into(farmImage);

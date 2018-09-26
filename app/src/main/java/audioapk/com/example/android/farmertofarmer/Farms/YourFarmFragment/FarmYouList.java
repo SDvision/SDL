@@ -99,8 +99,8 @@ public class FarmYouList extends Fragment implements View.OnClickListener,AddFar
             FarmCard farmCard = new FarmCard(title,img,land,day);
             farmCard.setDatabaseId(id);
             mFarmData.add(farmCard);
-
         }
+        cursor.close();
 
 
 

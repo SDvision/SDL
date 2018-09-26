@@ -12,11 +12,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.bumptech.glide.Glide;
-
 import java.util.ArrayList;
 
 import audioapk.com.example.android.farmertofarmer.LogIn;
@@ -25,11 +25,12 @@ import audioapk.com.example.android.farmertofarmer.R;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class ProcessYouList extends Fragment implements AddProcessDialog.ProcessAddListener{
+public class ProcessYouList extends Fragment implements AddProcessDialog.ProcessAddListener, View.OnClickListener,FinishFarmDialog.ProfitListener{
 
     private final ArrayList<ProcessCard> processCardList = new ArrayList<>();
     private ProcessesAdapter processesAdapter;
     private ProcessDatabase processDatabase;
+    private Button finishFarmButton;
 
     public ProcessYouList() {
 
@@ -42,12 +43,11 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
         View view =  inflater.inflate(R.layout.process_you_processes, container, false);
 
 
-
+        finishFarmButton = view.findViewById(R.id.process_you_farm_finish);
         CardView cardView = view.findViewById(R.id.process_farm_card);
         TextView farmTitle = cardView.findViewById(R.id.farm_card_title);
         ImageView farmImage = cardView.findViewById(R.id.farm_card_image);
         TextView landEdit = cardView.findViewById(R.id.farm_card_land);
-        TextView noProcess = cardView.findViewById(R.id.farm_card_no_process);
         TextView dateEdit = cardView.findViewById(R.id.farm_card_date);
         Intent intent = getActivity().getIntent();
         Bundle bundle = intent.getExtras();
@@ -61,7 +61,6 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
         {
             farmTitle.setText(bundle.getString("title"));
             landEdit.setText(String.valueOf(bundle.getDouble("land")));
-            noProcess.setText("0");  //TODO
 
             dateEdit.setText(bundle.getString("date"));
 
@@ -77,6 +76,8 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
 
 
 
+
+        finishFarmButton.setOnClickListener(this);
 
         FloatingActionButton fab = view.findViewById(R.id.add_farm_floating_button2);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +119,7 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
             String day = cursor.getString(3);
             processCardList.add(new ProcessCard(title,day,description));
         }
+        cursor.close();
         processesAdapter.notifyDataSetChanged();
 
     }
@@ -128,9 +130,31 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
 
         //TODO convert into room
         processDatabase.insetFarm(processCard.getTitle(),processCard.getDescription(),processCard.getDate());
-
         processCardList.add(processCard);
         processesAdapter.notifyDataSetChanged();
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        //TODO if already finished don't add dialog
+        FinishFarmDialog finishProcessDialog = new FinishFarmDialog();
+        finishProcessDialog.setProfitListener(this);
+        finishProcessDialog.show(getActivity().getSupportFragmentManager(),"Add Farm");
+
+
+    }
+
+    @Override
+    public void profitListen(int profit) {
+
+
+        //TODO sql world
+        Toast.makeText(getActivity(),"Add SQL here",Toast.LENGTH_SHORT).show();
+
+
+
 
     }
 }

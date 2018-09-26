@@ -120,4 +120,5 @@ public class AddProcessDialog extends DialogFragment implements DatePickerFragme
         dateString = date;
         dateText.setText(date);
     }
+
 }

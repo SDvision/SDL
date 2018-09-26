@@ -37,7 +37,9 @@ public class FarmDatabase extends SQLiteOpenHelper{
         sqLiteDatabase.execSQL("insert into "+DB_TABLE_FARM+" (title,image_resource,land,date) values ('"+title+"',"+img+",'"+land+"','"+date+"')");
         Cursor cursor = getAll();
         cursor.moveToLast();
-        return cursor.getInt(0);
+        int result =  cursor.getInt(0);
+        cursor.close();
+        return result;
 
     }
 

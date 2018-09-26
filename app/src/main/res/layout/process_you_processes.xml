@@ -25,6 +25,21 @@
 
             <include android:id="@+id/process_farm_card" layout="@layout/farm_you_farms_card"/>
 
+            <Button
+                android:id="@+id/process_you_farm_finish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_drawable"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:padding="10dp"
+                android:text="Finish the farm"
+                android:textColor="#ffff"
+                />
+
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
