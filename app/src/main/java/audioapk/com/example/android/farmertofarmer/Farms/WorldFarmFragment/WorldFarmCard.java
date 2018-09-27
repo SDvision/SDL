@@ -6,7 +6,7 @@ class WorldFarmCard {
     private String title;
     private final int imageResource;
 
-    public WorldFarmCard(String title,int imageResource) {
+    WorldFarmCard(String title,int imageResource) {
         this.title = title;
         this.imageResource = imageResource;
     }

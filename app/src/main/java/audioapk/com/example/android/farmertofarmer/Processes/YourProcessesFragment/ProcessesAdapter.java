@@ -35,7 +35,7 @@ class ProcessesAdapter extends RecyclerView.Adapter<ProcessesAdapter.WordViewHol
     private final LayoutInflater mInflater;
     private Context context;
 
-    public ProcessesAdapter(Context context, ArrayList<ProcessCard> cardList) {
+    ProcessesAdapter(Context context, ArrayList<ProcessCard> cardList) {
         mInflater = LayoutInflater.from(context);
         this.cardList = cardList;
         this.context = context;
@@ -45,19 +45,17 @@ class ProcessesAdapter extends RecyclerView.Adapter<ProcessesAdapter.WordViewHol
     @Override
     public ProcessesAdapter.WordViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View mItemView = mInflater.inflate(R.layout.process_you_processes_card, parent, false);
-        return new WordViewHolder(mItemView, this);
+        return new WordViewHolder(mItemView);
     }
 
 
     class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView dateText,titleText;
-        private ProcessesAdapter processesAdapter;
 
-        WordViewHolder(View itemView, ProcessesAdapter processesAdapter) {
+        WordViewHolder(View itemView) {
             super(itemView);
             dateText = itemView.findViewById(R.id.process_card_date);
             titleText = itemView.findViewById(R.id.process_card_title);
-            this.processesAdapter = processesAdapter;
             itemView.setOnClickListener(this);
         }
 

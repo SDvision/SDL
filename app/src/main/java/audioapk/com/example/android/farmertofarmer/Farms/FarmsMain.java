@@ -10,7 +10,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import audioapk.com.example.android.farmertofarmer.Farms.WorldFarmFragment.WorldRootFragment;
 import audioapk.com.example.android.farmertofarmer.Farms.YourFarmFragment.FarmYouList;
@@ -21,23 +20,17 @@ import audioapk.com.example.android.farmertofarmer.R;
 public class FarmsMain extends AppCompatActivity {
 
 
-
-    private SharedPreferences sharedPreferences;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farm_main);
 
 
-
-        sharedPreferences = getSharedPreferences(LogIn.SHARED_FILE,MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(LogIn.SHARED_FILE, MODE_PRIVATE);
         if (!sharedPreferences.contains(LogIn.LOGIN)){
             Intent intent = new Intent(this, LogIn.class);
             finish();
             startActivity(intent);
-            Toast.makeText(this,"Login not found",Toast.LENGTH_SHORT).show();
             return;
         }
         if (!sharedPreferences.contains(LogIn.STATE) && !sharedPreferences.contains(LogIn.DISTRICT)){

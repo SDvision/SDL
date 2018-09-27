@@ -5,7 +5,7 @@ public class WorldProcessCard {
     private String land,date,processDB;
     private int profit;
 
-    public WorldProcessCard(String land, String date, String processDB, int profit) {
+    WorldProcessCard(String land, String date, String processDB, int profit) {
         this.land = land;
         this.date = date;
         this.processDB = processDB;

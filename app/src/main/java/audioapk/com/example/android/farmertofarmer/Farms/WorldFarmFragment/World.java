@@ -76,7 +76,7 @@ public class World extends Fragment{
         String[] sportsList = getResources()
                 .getStringArray(R.array.farm_titles);
         TypedArray sportsImageResources = getResources()
-                .obtainTypedArray(R.array.sports_images);
+                .obtainTypedArray(R.array.farm_images);
 
         mSportsData.clear();
 

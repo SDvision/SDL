@@ -24,8 +24,6 @@ public class Profile extends AppCompatActivity {
 
     private Spinner state_Spinner;
     private Spinner district_Spinner;
-    private Spinner taluka_Spinner;
-
     private Map<String,List<String>> districtToTaluka;
 
     @Override
@@ -35,8 +33,6 @@ public class Profile extends AppCompatActivity {
 
         state_Spinner = findViewById(R.id.profile_stateSpinner);
         district_Spinner = findViewById(R.id.profile_districtSpinner);
-        taluka_Spinner = findViewById(R.id.profile_talukaSpinner);
-
 
         final ArrayAdapter<String> stateAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.india_states));
         final ArrayList<String> districtArrayList = new ArrayList<>();
@@ -113,7 +109,16 @@ public class Profile extends AppCompatActivity {
 
         Map<String,List<String>> districtToTaluka = new HashMap<>();
 
-        districtToTaluka.put("Jalgaon",Arrays.asList("Jalgaon","chalisgao",""));
+        districtToTaluka.put("Sindhudurg",Arrays.asList(
+        "Kankavli",
+        "Vaibhavwadi 416810",
+        "Devgad 416613",
+        "Malwan 416606",
+        "Sawantwadi",
+        "Kudal 416520",
+        "Vengurla 416512",
+        "Dodamarg 416512 (Kasal)"
+        ));
 
 
         return districtToTaluka;

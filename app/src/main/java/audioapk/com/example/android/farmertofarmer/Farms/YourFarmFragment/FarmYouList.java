@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -128,9 +127,6 @@ public class FarmYouList extends Fragment implements View.OnClickListener,AddFar
 
     @Override
     public void setValues(FarmCard farmCard) {
-
-        Toast.makeText(getActivity(),"Card added",Toast.LENGTH_SHORT).show();
-
 
         //TODO convert into room
         int id = farmDatabase.insetFarm(farmCard.getTitle(),farmCard.getImageResource(),String.valueOf(farmCard.getLandArea()),farmCard.getDay());

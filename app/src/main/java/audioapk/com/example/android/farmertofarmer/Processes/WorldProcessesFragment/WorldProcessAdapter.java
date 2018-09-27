@@ -30,7 +30,7 @@ class WorldProcessAdapter extends RecyclerView.Adapter<WorldProcessAdapter.WordV
             private final TextView profitText;
             private final TextView dateText;
 
-            WordViewHolder(View itemView, WorldProcessAdapter adapter) {
+            WordViewHolder(View itemView) {
                 super(itemView);
                 profitText = itemView.findViewById(R.id.process_card_title);
                 dateText = itemView.findViewById(R.id.process_card_date);
@@ -72,7 +72,7 @@ class WorldProcessAdapter extends RecyclerView.Adapter<WorldProcessAdapter.WordV
         public WorldProcessAdapter.WordViewHolder onCreateViewHolder(ViewGroup parent,
                                                                                                                                               int viewType) {
             View mItemView = LayoutInflater.from(context).inflate(R.layout.process_you_processes_card, parent, false);
-            return new WordViewHolder(mItemView, this);
+            return new WordViewHolder(mItemView);
         }
 
         @Override

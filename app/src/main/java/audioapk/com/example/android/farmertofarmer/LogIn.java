@@ -11,7 +11,6 @@ public class LogIn extends AppCompatActivity {
     public static final String LOGIN = "login",
                                 STATE = "state",
                                 DISTRICT = "district",
-                                TALUKA = "taluka",
             SHARED_FILE = "com.example.android.farmertofarmer.loginId";
 
 

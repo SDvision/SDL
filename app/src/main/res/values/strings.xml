@@ -8,57 +8,72 @@
     <string name="farm_you_farms">My Farms</string>
     <string name="farm_world">World Statistics</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
     <string-array name="farm_titles">
-        <item>Baseball</item>
-        <item>Badminton</item>
-        <item>Basketball</item>
-        <item>Bowling</item>
-        <item>Cycling</item>
-        <item>Golf</item>
-        <item>Running</item>
-        <item>Soccer</item>
-        <item>Swimming</item>
-        <item>Table Tennis</item>
-        <item>Tennis</item>
+        <item>Rice</item>
+        <item>Buffalo milk</item>
+        <item>Cow milk</item>
+        <item>Wheat</item>
+
+        <item>Mangoes</item>
+        <item>Guavas</item>
+        <item>Sugar cane</item>
+        <item>Cotton</item>
+
+        <item>Bananas</item>
+        <item>Potatoes</item>
+        <item>Tomatoes</item>
+        <item>Groundnuts</item>
+
+        <item>Okra</item>
+        <item>Onions</item>
+        <item>Chick peas</item>
+        <item>Soybeans</item>
+
+        <item>Sunflower</item>
+        <item>Sorghum</item>
+        <item>Ginger</item>
+        <item>Chillies</item>
+
+        <item>Cashew nuts</item>
+        <item>Garlic</item>
+        <item>Tea</item>
     </string-array>
 
-    <string-array name="sports_info">
-        <item>Here is some Baseball news!</item>
-        <item>Here is some Badminton news!</item>
-        <item>Here is some Basketball news!</item>
-        <item>Here is some Bowling news!</item>
-        <item>Here is some Cycling news!</item>
-        <item>Here is some Golf news!</item>
-        <item>Here is some Running news!</item>
-        <item>Here is some Soccer news!</item>
-        <item>Here is some Swimming news!</item>
-        <item>Here is some Table Tennis news!</item>
-        <item>Here is some Tennis news!</item>
-    </string-array>
 
+    <array name="farm_images">
+        <item>@drawable/img_rice</item>
+        <item>@drawable/img_buffalo_milk</item>
+        <item>@drawable/img_cow_milk</item>
+        <item>@drawable/img_wheat</item>
 
-    <array name="sports_images">
-        <item>@drawable/img_baseball</item>
-        <item>@drawable/img_badminton</item>
-        <item>@drawable/img_basketball</item>
-        <item>@drawable/img_bowling</item>
-        <item>@drawable/img_cycling</item>
-        <item>@drawable/img_golf</item>
-        <item>@drawable/img_running</item>
-        <item>@drawable/img_soccer</item>
-        <item>@drawable/img_swimming</item>
-        <item>@drawable/img_tabletennis</item>
-        <item>@drawable/img_tennis</item>
+        <item>@drawable/img_mango</item>
+        <item>@drawable/img_guava</item>
+        <item>@drawable/img_sugar_cane</item>
+        <item>@drawable/img_cotton</item>
+
+        <item>@drawable/img_banana</item>
+        <item>@drawable/img_potatoes</item>
+        <item>@drawable/img_tomatoes</item>
+        <item>@drawable/img_peanut</item>
+
+        <item>@drawable/img_okra</item>
+        <item>@drawable/img_onion</item>
+        <item>@drawable/img_chickpea</item>
+        <item>@drawable/img_soyabean</item>
+
+        <item>@drawable/img_sunflower</item>
+        <item>@drawable/img_sorghum</item>
+        <item>@drawable/img_ginger</item>
+        <item>@drawable/img_chillies</item>
+
+        <item>@drawable/img_cashew_apples</item>
+        <item>@drawable/img_garlic</item>
+        <item>@drawable/img_tea</item>
 
     </array>
 
     <string name="title_placeholder">Title</string>
-    <string name="news_placeholder">News</string>
-    <string name="sports_info_placeholder">Here is some news</string>
-    <string name="subtitle_detail_text">Lorem ipsum.</string>
 
 
     <string-array name="india_states">

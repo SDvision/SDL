@@ -96,7 +96,7 @@ public class AddFarmDialog extends DialogFragment implements DatePickerFragment.
                     return;
                 }
 
-                TypedArray farmImageResources = getResources().obtainTypedArray(R.array.sports_images);
+                TypedArray farmImageResources = getResources().obtainTypedArray(R.array.farm_images);
                 FarmCard newFarmCard = new FarmCard(selectFarmSpinner.getSelectedItem().toString(),
                         farmImageResources.getResourceId(selectFarmSpinner.getSelectedItemPosition(), 0),
                         Double.parseDouble(landEditText.getText().toString()), dateString);

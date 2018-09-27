@@ -21,7 +21,6 @@ public class WorldProcess extends Fragment {
 
     private final ArrayList<WorldProcessCard> cardList = new ArrayList<>();
     private WorldProcessAdapter mAdapter;
-    private RecyclerView mRecyclerView;
     private FarmWorldDatabase farmWorldDatabase;
 
     public WorldProcess() {
@@ -47,7 +46,7 @@ public class WorldProcess extends Fragment {
         titleText.setText(titleTextBuilder);
 
 
-        mRecyclerView = view.findViewById(R.id.recyclerView3);
+        RecyclerView mRecyclerView = view.findViewById(R.id.recyclerView3);
         mAdapter = new WorldProcessAdapter(getActivity(), cardList,title,img);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -64,7 +63,7 @@ public class WorldProcess extends Fragment {
         cardList.clear();
         Cursor cursor = farmWorldDatabase.findFarms(title);
         while (cursor.moveToNext()){
-            int id = cursor.getInt(0);
+
             String process = cursor.getString(2);
             String land = cursor.getString(4);
             String date = cursor.getString(5);

@@ -129,43 +129,43 @@
             app:layout_constraintTop_toBottomOf="@+id/profile_address_text" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/profile_talukaLinearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_districtLinearLayout">
+    <!--<LinearLayout-->
+        <!--android:id="@+id/profile_talukaLinearLayout"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="36dp"-->
+        <!--android:orientation="horizontal"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.0"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/profile_districtLinearLayout">-->
 
-        <TextView
-            android:id="@+id/profile_talukaTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Taluka"
-            android:paddingTop="10dp"
-            android:textColor="#333333"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        <!--<TextView-->
+            <!--android:id="@+id/profile_talukaTextView"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="Taluka"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:textColor="#333333"-->
+            <!--android:textSize="18sp"-->
+            <!--android:textStyle="bold"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/linearLayout" />-->
 
-        <Spinner
-            android:id="@+id/profile_talukaSpinner"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_weight="2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/farm_card_date"
-            app:layout_constraintTop_toBottomOf="@+id/profile_address_text" />
-    </LinearLayout>
+        <!--<Spinner-->
+            <!--android:id="@+id/profile_talukaSpinner"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_weight="2"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toEndOf="@+id/farm_card_date"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/profile_address_text" />-->
+    <!--</LinearLayout>-->
 
     <Button
         android:id="@+id/profile_getStarted_button"
@@ -183,7 +183,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_talukaLinearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_districtLinearLayout" />
 
 
 </android.support.constraint.ConstraintLayout>

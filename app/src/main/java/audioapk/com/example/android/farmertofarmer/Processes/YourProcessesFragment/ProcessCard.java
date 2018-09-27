@@ -7,7 +7,7 @@ public class ProcessCard {
     private String description;
 
 
-    public ProcessCard(String title, String date, String description) {
+    ProcessCard(String title, String date, String description) {
         this.title = title;
         this.date = date;
         this.description = description;

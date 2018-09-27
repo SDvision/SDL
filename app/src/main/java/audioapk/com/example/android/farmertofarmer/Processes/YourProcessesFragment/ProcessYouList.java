@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -165,7 +164,6 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
 
 
         //TODO room
-        Toast.makeText(getActivity(),"added to sql",Toast.LENGTH_SHORT).show();
         farmWorldDatabase.insetFarm(titleFarm,processDPId,imgFarm,landFarm,dateFarm,profit);
 
         finishFarmButton.setText("This farm is finished with "+profit+" profit");

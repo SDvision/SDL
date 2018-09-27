@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 public class FarmWorldDatabase extends SQLiteOpenHelper{
 
@@ -13,18 +12,15 @@ public class FarmWorldDatabase extends SQLiteOpenHelper{
 
     public static final int NOT_FOUND = -275452;
 
-    private Context context;
     private SQLiteDatabase sqLiteDatabase;
 
     public FarmWorldDatabase(Context context) {
         super(context, DB_NAME, null ,1);
-        this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table "+DB_TABLE_FARM+" (_id integer primary key autoincrement ,title text ,process text, image_resource integer, land text, date text, profit integer)");
-        Toast.makeText(context,"Table created",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -53,7 +49,6 @@ public class FarmWorldDatabase extends SQLiteOpenHelper{
 
         if(cursor.getCount() <= 0){
             cursor.close();
-            Toast.makeText(context,"notFound",Toast.LENGTH_SHORT).show();
             return NOT_FOUND;
         }
         cursor.moveToNext();
@@ -68,8 +63,7 @@ public class FarmWorldDatabase extends SQLiteOpenHelper{
 
         sqLiteDatabase = getReadableDatabase();
         String Query = "Select * from " + DB_TABLE_FARM + " where title = '" + title+"'";
-        Cursor cursor = sqLiteDatabase.rawQuery(Query, null);
-        return cursor;
+        return sqLiteDatabase.rawQuery(Query, null);
     }
 
 }
