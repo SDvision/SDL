@@ -42,7 +42,7 @@ public class DatePickerFragment extends DialogFragment
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
 
-        if (datePickListener != null && (datePickListener instanceof AddFarmDialog || datePickListener instanceof AddProcessDialog)){
+        if ((datePickListener instanceof AddFarmDialog || datePickListener instanceof AddProcessDialog)){
 
             String day_string = Integer.toString(day);              //day
             String month_string = Integer.toString(month + 1);     //month

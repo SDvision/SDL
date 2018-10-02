@@ -13,9 +13,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 import audioapk.com.example.android.farmertofarmer.Farms.FarmsMain;
@@ -24,7 +21,6 @@ public class Profile extends AppCompatActivity {
 
     private Spinner state_Spinner;
     private Spinner district_Spinner;
-    private Map<String,List<String>> districtToTaluka;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,15 +50,6 @@ public class Profile extends AppCompatActivity {
                     districtAdapter.notifyDataSetChanged();
 
                 }
-
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
-        });
-
-        district_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
             }
             @Override
@@ -99,29 +86,6 @@ public class Profile extends AppCompatActivity {
         startActivity(intent);
 
 
-
-
-
-    }
-
-    private static Map<String,List<String>> getDistrictToTaluka(){
-
-
-        Map<String,List<String>> districtToTaluka = new HashMap<>();
-
-        districtToTaluka.put("Sindhudurg",Arrays.asList(
-        "Kankavli",
-        "Vaibhavwadi 416810",
-        "Devgad 416613",
-        "Malwan 416606",
-        "Sawantwadi",
-        "Kudal 416520",
-        "Vengurla 416512",
-        "Dodamarg 416512 (Kasal)"
-        ));
-
-
-        return districtToTaluka;
     }
 
 }

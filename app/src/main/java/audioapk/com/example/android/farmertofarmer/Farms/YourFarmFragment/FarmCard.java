@@ -18,19 +18,19 @@ class FarmCard {
         this.day = day;
     }
 
-    public void setDatabaseId(int databaseId) {
+    void setDatabaseId(int databaseId) {
         this.databaseId = databaseId;
     }
 
-    public int getDatabaseId() {
+    int getDatabaseId() {
         return databaseId;
     }
 
-    public double getLandArea() {
+    double getLandArea() {
         return landArea;
     }
 
-    public String getDay() {
+    String getDay() {
         return day;
     }
 
@@ -38,7 +38,7 @@ class FarmCard {
         return title;
     }
 
-    public int getImageResource() {
+    int getImageResource() {
         return imageResource;
     }
 

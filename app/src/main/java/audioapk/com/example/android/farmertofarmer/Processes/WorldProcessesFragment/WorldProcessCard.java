@@ -20,11 +20,11 @@ public class WorldProcessCard {
         return date;
     }
 
-    public String getProcessDB() {
+    String getProcessDB() {
         return processDB;
     }
 
-    public int getProfit() {
+    int getProfit() {
         return profit;
     }
 

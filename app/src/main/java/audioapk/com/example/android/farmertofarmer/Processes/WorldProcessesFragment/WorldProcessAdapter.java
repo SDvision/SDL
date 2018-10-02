@@ -44,7 +44,7 @@ class WorldProcessAdapter extends RecyclerView.Adapter<WorldProcessAdapter.WordV
 
                 ProcessYouList processYouList = new ProcessYouList();
                 processYouList.setValues(title,element.getLand(),element.getDate(),img,NOT_FOUND);
-                processYouList.setNotMineFarm(element.getProcessDB());
+                processYouList.setNotMyFarm(element.getProcessDB());
                 final FragmentTransaction ft = ((FragmentActivity)context).getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.world_root_frame, processYouList);
                 ft.addToBackStack(null);
@@ -61,7 +61,7 @@ class WorldProcessAdapter extends RecyclerView.Adapter<WorldProcessAdapter.WordV
             }
         }
 
-        public WorldProcessAdapter(Context context, ArrayList<WorldProcessCard> wordList,String title,int img) {
+        WorldProcessAdapter(Context context, ArrayList<WorldProcessCard> wordList, String title, int img) {
             this.context = context;
             this.cardList = wordList;
             this.title = title;

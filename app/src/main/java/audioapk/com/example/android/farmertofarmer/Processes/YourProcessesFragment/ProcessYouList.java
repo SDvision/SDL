@@ -39,7 +39,8 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
     //TODO room
     private String processDPId,titleFarm,landFarm,dateFarm;
     private int imgFarm,farmId;
-    private boolean notMineFarm = true;
+    private boolean myFarm = true,
+                    setFinished = false;
 
 
     public ProcessYouList() {
@@ -54,9 +55,9 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
         this.farmId=farmId;
     }
 
-    public void setNotMineFarm(String processDPId){
+    public void setNotMyFarm(String processDPId){
         this.processDPId = processDPId;
-        this.notMineFarm = false;
+        this.myFarm = false;
     }
 
 
@@ -83,7 +84,7 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
 
 
         //TODO room
-        if (notMineFarm) {
+        if (myFarm) {
             String loginName = getActivity().getSharedPreferences(LogIn.SHARED_FILE, MODE_PRIVATE).getString(LogIn.LOGIN, "notFound");
             processDPId = String.valueOf(loginName + farmId);
         }
@@ -151,10 +152,11 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
     @Override
     public void onClick(View v) {
 
+        if (setFinished) return;
 
         FinishFarmDialog finishProcessDialog = new FinishFarmDialog();
         finishProcessDialog.setProfitListener(this);
-        finishProcessDialog.show(getActivity().getSupportFragmentManager(),"Add Farm");
+        finishProcessDialog.show(getActivity().getSupportFragmentManager(), "Add Farm");
 
 
     }
@@ -168,6 +170,8 @@ public class ProcessYouList extends Fragment implements AddProcessDialog.Process
 
         finishFarmButton.setText("This farm is finished with "+profit+" profit");
         fab.setVisibility(View.INVISIBLE);
+
+        setFinished = true;
 
 
 

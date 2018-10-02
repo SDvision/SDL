@@ -18,7 +18,7 @@ public class FinishFarmDialog extends DialogFragment{
 
     private ProfitListener profitListener;
     interface ProfitListener{ void profitListen(int profit);}
-    public void setProfitListener(ProfitListener profitListener) { this.profitListener = profitListener; }
+    public void setProfitListener(ProfitListener profitListener ) { this.profitListener = profitListener; }
 
     public FinishFarmDialog() {
     }

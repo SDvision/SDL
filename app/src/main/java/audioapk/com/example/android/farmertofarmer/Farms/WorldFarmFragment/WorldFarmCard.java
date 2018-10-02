@@ -15,8 +15,7 @@ class WorldFarmCard {
         return title;
     }
 
-    public int getImageResource() {
+    int getImageResource() {
         return imageResource;
     }
-
 }
