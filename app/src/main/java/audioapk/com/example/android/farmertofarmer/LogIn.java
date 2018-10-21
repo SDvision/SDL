@@ -28,7 +28,7 @@ public class LogIn extends AppCompatActivity {
     }
 
 
-    public void loginClicked(View view) {
+    public void SignUpClicked(View view) {
 
         if (farmerIdEditText.getText().toString().trim().equals("")){
             farmerIdEditText.setError("Id could't be empty");

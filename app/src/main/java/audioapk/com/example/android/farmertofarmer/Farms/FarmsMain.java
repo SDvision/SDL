@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.Objects;
+
 import audioapk.com.example.android.farmertofarmer.Farms.WorldFarmFragment.WorldRootFragment;
 import audioapk.com.example.android.farmertofarmer.Farms.YourFarmFragment.FarmYouList;
 import audioapk.com.example.android.farmertofarmer.LogIn;
@@ -35,9 +37,11 @@ public class FarmsMain extends AppCompatActivity {
         }
         if (!sharedPreferences.contains(LogIn.STATE) && !sharedPreferences.contains(LogIn.DISTRICT)){
             Intent intent = new Intent(this, Profile.class);
+            finish();
             startActivity(intent);
             return;
         }
+        Objects.requireNonNull(getSupportActionBar()).setTitle(sharedPreferences.getString(LogIn.DISTRICT,"Location Not Found"));
 
         final TabLayout tabLayout = findViewById(R.id.tab_layout);
 

@@ -28,8 +28,7 @@
 
         <!--Farms-->
         <activity
-            android:name=".Farms.FarmsMain"
-            android:label="My Farms">
+            android:name=".Farms.FarmsMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

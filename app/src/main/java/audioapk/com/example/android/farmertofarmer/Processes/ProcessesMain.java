@@ -1,6 +1,7 @@
 package audioapk.com.example.android.farmertofarmer.Processes;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -8,8 +9,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import java.util.Objects;
+
+import audioapk.com.example.android.farmertofarmer.LogIn;
 import audioapk.com.example.android.farmertofarmer.Processes.WorldProcessesFragment.WorldProcessRootFragment;
 import audioapk.com.example.android.farmertofarmer.Processes.YourProcessesFragment.ProcessYouList;
+import audioapk.com.example.android.farmertofarmer.Profile;
 import audioapk.com.example.android.farmertofarmer.R;
 
 public class ProcessesMain extends AppCompatActivity {
@@ -18,6 +23,16 @@ public class ProcessesMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.process_main);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(LogIn.SHARED_FILE, MODE_PRIVATE);
+        if (!sharedPreferences.contains(LogIn.DISTRICT)){
+            Intent intent = new Intent(this, Profile.class);
+            finish();
+            startActivity(intent);
+            return;
+        }
+        Objects.requireNonNull(getSupportActionBar()).setTitle(sharedPreferences.getString(LogIn.DISTRICT,"Location Not Found"));
+
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -32,7 +47,6 @@ public class ProcessesMain extends AppCompatActivity {
 
         final WorldProcessRootFragment worldProcessRootFragment = new WorldProcessRootFragment();
         worldProcessRootFragment.setCardValues(titleFarm,imgFarm);
-
 
 
         final TabLayout tabLayout = findViewById(R.id.tab_layout2);
