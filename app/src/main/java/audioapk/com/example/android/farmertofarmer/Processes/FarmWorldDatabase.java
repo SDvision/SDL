@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import audioapk.com.example.android.farmertofarmer.LogIn;
+import audioapk.com.example.android.farmertofarmer.LogIn.LogIn;
 
 import static android.content.Context.MODE_PRIVATE;
 

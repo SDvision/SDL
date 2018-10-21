@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import audioapk.com.example.android.farmertofarmer.Farms.FarmDatabase;
-import audioapk.com.example.android.farmertofarmer.LogIn;
+import audioapk.com.example.android.farmertofarmer.LogIn.LogIn;
 import audioapk.com.example.android.farmertofarmer.R;
 
 import static android.content.Context.MODE_PRIVATE;

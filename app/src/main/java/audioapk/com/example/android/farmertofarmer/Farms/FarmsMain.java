@@ -15,8 +15,8 @@ import java.util.Objects;
 
 import audioapk.com.example.android.farmertofarmer.Farms.WorldFarmFragment.WorldRootFragment;
 import audioapk.com.example.android.farmertofarmer.Farms.YourFarmFragment.FarmYouList;
-import audioapk.com.example.android.farmertofarmer.LogIn;
-import audioapk.com.example.android.farmertofarmer.Profile;
+import audioapk.com.example.android.farmertofarmer.LogIn.LogIn;
+import audioapk.com.example.android.farmertofarmer.LogIn.Profile;
 import audioapk.com.example.android.farmertofarmer.R;
 
 public class FarmsMain extends AppCompatActivity {

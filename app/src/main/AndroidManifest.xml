@@ -14,7 +14,7 @@
 
         <!--Login-->
         <activity
-            android:name=".LogIn"
+            android:name=".LogIn.LogIn"
             android:theme="@style/RemoveActionBar">
 
 
@@ -22,7 +22,7 @@
         </activity>
 
         <!--Profile-->
-        <activity android:name=".Profile">
+        <activity android:name=".LogIn.Profile">
         </activity>
 
 

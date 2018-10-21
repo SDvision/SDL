@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LogIn">
+    tools:context=".LogIn.LogIn">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/login_main_constrain"
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:background="@drawable/button_drawable"
-
+        android:onClick="logInClicked"
         android:text="Login"
         android:textColor="#ffffff"
         app:layout_constraintBaseline_toBaselineOf="@+id/button"
@@ -105,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:background="@drawable/button_drawable"
-        android:onClick="SignUpClicked"
+        android:onClick="signUpClicked"
         android:textColor="#ffffff"
         android:text="SignUp"
         app:layout_constraintBottom_toBottomOf="parent"

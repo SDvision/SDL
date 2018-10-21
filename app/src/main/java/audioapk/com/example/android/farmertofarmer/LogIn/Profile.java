@@ -1,4 +1,4 @@
-package audioapk.com.example.android.farmertofarmer;
+package audioapk.com.example.android.farmertofarmer.LogIn;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 import audioapk.com.example.android.farmertofarmer.Farms.FarmsMain;
+import audioapk.com.example.android.farmertofarmer.R;
 
 public class Profile extends AppCompatActivity {
 
@@ -41,8 +42,8 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                if (position !=0 && position != stateAdapter.getPosition("Maharashtra")){
-                    Toast.makeText(Profile.this,"Only Maharashtra is available for now",Toast.LENGTH_SHORT).show();
+                if (position !=0){
+                    Toast.makeText(Profile.this,"Only Maharashtra Is Available For Now!",Toast.LENGTH_LONG).show();
                     state_Spinner.setSelection(stateAdapter.getPosition("Maharashtra"));
 
                     districtArrayList.clear();
